@@ -1,0 +1,104 @@
+.about {
+  display: flex;
+  flex-direction: column;
+  height: 65vh;
+  width: 85vw;
+  margin: 0 auto;
+  gap: 20px;
+  
+}
+
+
+.textabout {
+    text-align: center;
+    opacity: 1;
+    margin: 0 auto;
+    width: 85vw;
+    height: auto;
+    padding: 0.4rem;
+    font-size: 18px;
+    p{
+        text-align: left;
+    }
+    align-content: center;
+    
+}
+  
+
+.imgabout {
+    height: 25vh;
+    width: 75vw;
+    justify-content: center;
+    align-content: center;
+    margin: 0 auto;
+}
+@media screen and (width > 425px) {
+    .about{
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+        .textabout{
+            align-items: center;
+            font-size: 15px;
+        }
+        .imgabout{
+            height: 330px;
+            width: 420px;
+        }
+    }
+}
+  
+@media screen and (width > 768px) {
+    .about{
+        display: flex;
+        flex-direction: row;
+        gap: 12px;
+        align-items: center;
+        .textabout{
+            align-items: center;
+            font-size: 16px;
+        }
+        .imgabout{
+            height: 380px;
+            width: 520px;
+        }
+    }
+}
+
+@media screen and (width > 1024px) {
+    .about{
+        display: flex;
+        flex-direction: row;
+        height: 75vh;
+
+        gap: 35px;
+        .textabout{
+            align-items: center;
+            font-size: 20px;
+            
+        }
+        .imgabout{
+            height: 500px;
+            width: 50vw;
+        }
+    }
+}
+
+@media screen and (width > 1440px) {
+    .about{
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+        width: 70vw;
+
+        .textabout{
+            align-items: left;
+            font-size: 20px;
+        }
+        .imgabout{
+            height: 500px;
+            width: 1600px;
+        }
+    }
+}

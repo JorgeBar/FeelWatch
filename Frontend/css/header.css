@@ -1,0 +1,70 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem;
+  background-color: var(--second-bg-color);
+  .logoName {
+    font-size: 25px;
+  }
+  .nav {
+    .list-navbar {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      justify-content: space-between;
+      gap: 10px;
+      list-style: none;
+    }
+  }
+
+  .link {
+    text-decoration: none;
+    position: relative;
+    color: var(--main-text-color);
+    transition: color 0.3s ease;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: var(--green-Matrix);
+      transition: width 0.5s ease;
+    }
+  }
+}
+.logoName {
+  cursor: pointer;
+  a {
+    color: var(--green-Matrix);
+    font-family: "Meta";
+    font-size: 2rem;
+  }
+}
+@media screen and (width > 425px) {
+  .hidden-btn{
+    display: block;
+  }
+}
+
+@media screen and (width > 768px) {
+  .hidden-btn {
+    display: block;
+  }
+}
+@media screen and (hover: hover) {
+  .link {
+    cursor: pointer;
+    &:hover {
+      color: var(--green-Matrix);
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+}

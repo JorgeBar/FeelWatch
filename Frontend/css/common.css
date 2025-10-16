@@ -1,0 +1,61 @@
+body {
+
+
+}
+.main-bg {
+  background-color: var(--bg-color);
+  color: var(--main-text-color);
+  font-family: var(--main-font-family);
+}
+
+
+a{
+  text-decoration: none;
+}
+
+.main-btn {
+  display: flex;
+  background-color: var(--main-brand-color);
+  border-radius: 5px;
+  color: var(--main-text-color);
+  border: none;
+}
+.form-btn{
+    display: block;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 0.6rem;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s linear;
+}
+.matrix-prueba {
+  text-align: center;
+  color: #00ff41;
+  text-shadow: 0 0 5px #00ff41, 0 0 10px #00ff41;
+  font-family: monospace;
+  font-size: 30px;
+ 
+}
+
+.hidden-btn{
+    display: none;
+}
+
+@media screen and (width > 768px) {
+    .hidden-btn{
+        display: block;
+        cursor: pointer;
+    }
+    
+}
+
+@media screen and (hover: hover) {
+  .main-btn{
+    cursor: pointer;
+    &:hover {
+      background-color: var(--main-brand-color-light);
+      
+    }
+  }
+}

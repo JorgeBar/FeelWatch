@@ -1,0 +1,107 @@
+.introduction {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagename {
+  text-align: center;
+  display: none;
+}
+
+.fancysentence {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.imgintrod {
+  width: 100vw;
+  height: auto;
+}
+@media screen and (width >425px) {
+    .introduction{
+
+        .fancysentence {
+          color: rgb(255, 255, 255);
+          font-size: 1.3rem;
+          text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+          background-color: rgb(32, 36, 33);
+          padding: 1rem 2rem;
+          border-radius: 10px;
+        }
+
+    }
+}
+
+@media screen and (width > 768px) {
+  .introduction {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url("../../fotos/mood2Agrandada.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 1.3rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+  }
+  .imgintrod {
+    display: none;
+  }
+}
+
+@media screen and (width > 1024px) {
+  .introduction {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+  }
+  .imgintrod {
+    width: 50vw;
+  }
+}
+
+@media screen and (width > 768) {
+  .introduction {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url("../../fotos/mood2Agrandada.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 2rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+
+    .imgintrod {
+      display: none;
+    }
+  }
+}
