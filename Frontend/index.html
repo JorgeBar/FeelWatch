@@ -14,18 +14,26 @@
     <link rel="stylesheet" href="css//footer.css" />
     <meta property="og:title" content="FeelWatch">
     <meta property="og:description" content="What you really feel to watch">
-    <meta property="og:image" content="???">
+    <meta property="og:image" content="https://raw.githubusercontent.com/JorgeBar/FeelWatch/main/Frontend/fotos/mood2.jpg">
   </head>
   <body class="main-bg">
     <header class="header">
       <h1 class="logoName "><a  href="index.html">FeelWatch</a></h1>
-      <nav class="nav">
+      
+      <nav class="navbar">
+         <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+         </label>
+
         <ul class="list-navbar">
-          <li class="list-item"><a class="link" href="index.html">Home</a></li>
-          <li class="list-item hidden-btn"><a class="link" href="#about">About Us</a></li>
-          <li class="list-item hidden-btn"><a class="link" href="listas_template.html">Lists</a></li>
-          <li class="list-item hidden-btn">Lang</li>
-          <li class="list-item hidden-btn"><a class="link" href="SignUp.html">SignUp</a></li>
+          <li><a class="link" href="index.html">Home </a></li>
+          <li><a class="link" href="#about">About Us</a></li>
+          <li><a class="link" href="listas_template.html">Lists</a></li>
+          <li><a class="link" href="SignUp.html">Sign Up</a></li>
+          <li><a class="link hidden-btn">Lang</a></li>
           
         </ul>
       </nav>
@@ -35,6 +43,7 @@
      
           <p class="fancysentence">Let your feelings choose the movie.</p>
           <img class="imgintrod" src="./fotos/mood2.jpg">
+          <img class="secondimg " src="./fotos/swiching mood.jpg">
      
     </section>
     <main>
@@ -64,7 +73,7 @@
     
         </aside>
         <section class="listsmovies">
-          <h3 class="link">Enjoy the new movies experience designed for you </h3>
+          <h3 class="">Enjoy the new movies experience designed for you </h3>
           <div>
             <h3>
               <button class="main-btn" id="blowBtn">Blow Up</button>

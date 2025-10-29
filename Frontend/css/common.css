@@ -1,7 +1,4 @@
-body {
 
-
-}
 .main-bg {
   background-color: var(--bg-color);
   color: var(--main-text-color);
@@ -16,7 +13,9 @@ a{
 .main-btn {
   display: flex;
   background-color: var(--main-brand-color);
+  background-color: var(--green-Matrix);
   border-radius: 5px;
+  padding: 0.6rem;
   color: var(--main-text-color);
   border: none;
 }
@@ -59,3 +58,5 @@ a{
     }
   }
 }
+
+/*    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);

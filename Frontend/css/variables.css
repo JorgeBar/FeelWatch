@@ -30,7 +30,10 @@
     font-family: "Meta";
     src:url("../fonts/Metamorphous/Metamorphous-Regular.ttf") ;
 }
-
+@font-face {
+    font-family: "Lex";
+    src: url("../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
 /*
 Esto es realmente mejor con javaScript
 

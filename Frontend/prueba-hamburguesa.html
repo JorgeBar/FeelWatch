@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="prueba-hamburguesa2.css">
+    <title>Document</title>
+
+    <style>
+      .spinner{
+        margin: 4rem;
+        border-left: 5px solid red;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spinner 1s linear infinite;
+        animation-fill-mode: forwards;
+  
+      }
+      @keyframes spinner {
+        0% {
+          transform: rotate(0deg);
+        }
+        50%{
+          transform: rotate(180deg);
+          border-left: 5px solid black;
+        }
+   
+        100%{
+          transform: rotate(360deg);
+        }
+      }
+      .progress{
+        height: 20px ;
+        background-color: red;
+        width: 0;
+        top: 0;
+        z-index: 8000;
+        animation: progress 1s linear ;
+        animation-fill-mode: forwards;
+        animation-timeline: scroll();
+
+        
+      }
+      @supports (animation-timeline: scroll()){
+        .progress{
+          animation-timeline: scroll();/*Esta animacion del scroll es lo que estaba buscando para medio ocultar. Usando la opacidad. Minuto 38-42 de la clase 6.0*/
+          /*Quizás puede hacer la carga de letras en matrix con la animación que por cada % vaya cargando una letra? Tengo que probarlo*/
+        }
+      }
+
+      @keyframes progress{
+        0%{
+          width: 0;
+        }
+        100%{
+          width: 100%;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <header>
+      
+      
+      <nav class="navbar">
+        <div class="spinner"></div>
+        <div class="progress"></div>
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+        </label>
+        <ul class="nav-links">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Go to</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+
+    </header>
+
+      <div class="fondo"></div>
+
+
+  </body>
+</html>
