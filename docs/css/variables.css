@@ -1,0 +1,47 @@
+:root {
+   --bg-color: #000; 
+   --second-bg-color: rgba(2, 2, 2, 0.938);
+   --opposite-bg-color: #FFF;
+   --main-brand-color: rgb(138, 35, 158);
+   --main-brand-color-light: rgb(160, 79, 177);
+   --secondary-brand-color: rgb(214, 174, 42);
+   --main-text-color:#FFF;
+   --border-color: rgb(202, 228, 202);
+
+
+
+   --main-font-family: Arial,Helvetica;  /* Fuente principal*/
+   --read-font-family: sans-serif;
+   --green-Matrix:#00CC33 ;
+   font-size: 20px;
+}
+
+@font-face{
+    font-family: "Prueba";
+    src:url("../fonts/Acme-Regular.ttf")
+}
+
+@font-face {
+    font-family: "Irish";
+    src:url("../fonts/Irish_Grover/IrishGrover-Regular.ttf") ;
+}
+
+@font-face {
+    font-family: "Meta";
+    src:url("../fonts/Metamorphous/Metamorphous-Regular.ttf") ;
+}
+@font-face {
+    font-family: "Lex";
+    src: url("../fonts/Lexend_Deca/LexendDeca-VariableFont_wght.ttf");
+}
+/*
+Esto es realmente mejor con javaScript
+
+@media screen (prefers-color-scheme: light){
+    :root{
+        --bg-color: #fff;
+        --main-text-color:#000;
+    }
+
+}
+  */  

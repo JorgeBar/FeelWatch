@@ -1,0 +1,7 @@
+.footer{ 
+    background: radial-gradient(circle,var(--green-Matrix) 3%,var(--bg-color) 70%) ;/*Esto es de prueba , probablemente lo quite*/
+    text-align: center;
+    font-weight: 100;
+    padding: 1em  0;
+    font-size: 1rem;
+}

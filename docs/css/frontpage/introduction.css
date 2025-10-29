@@ -1,0 +1,145 @@
+.introduction {
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+}
+
+.pagename {
+  text-align: center;
+  display: none;
+}
+
+.fancysentence {
+  text-align: center;
+  font-size: 1.2rem;
+}
+.imgintrod {
+  width: 100vw;
+  height: auto;
+  
+}
+.secondimg{
+  display: none;
+}
+@media screen and (width >425px) {
+  .introduction {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364),
+      url("../fotos/mood2.jpg");
+    background-size: fill;
+    background-position: center;
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 1.3rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background-color: rgb(32, 36, 33);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+  }
+}
+
+@media screen and (width > 768px) {
+  .introduction {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    background-image: url("../../fotos/mood2Agrandada.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: 10;
+
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 1.3rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+    }
+  }
+  .imgintrod {
+    display: none;
+  }
+}
+
+@media screen and (width > 1024px) {
+  .introduction {
+    display: flex;
+    position: relative;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    height: 100vh;
+    margin-top: -3rem;
+
+  
+    background-image:
+    linear-gradient(to right, rgba(0,0,0,0.5), rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.274)),
+    url('../../gifs/61a7da610c110b6cdf57371128b0f8fd.gif'),       /* lado izquierdo */
+    url('../../fotos/amanecer2.jpg'),     /* lado derecho */
+    url('../../fotos/mood2.jpg');      /* foto centrada */
+
+    background-position: center, left center, right center, center center;
+
+
+  background-size: 
+    auto 70%,   /* lluvia ocupa mitad izquierda */
+    20% 70%,   /* amanecer mitad derecha */
+    20% 70%;   /* foto más pequeña y centrada */
+
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-color: #000; /* color de fondo por si algo no carga */
+
+  /* Para suavizar el cambio entre ambos lados */
+
+}
+
+
+
+    .fancysentence {
+      color: rgb(255, 255, 255);
+      font-size: 1.8rem;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.4);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      z-index: 0;
+    }
+  }
+  
+  
+
+
+    /*
+  background-image: url(../../fotos/swiching\ mood3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+   
+  
+  */
+
+
+/*Muy importante. Aquí hemos escogido hacerlo de una forma un poco engorrosa.
+Hemos jugado con las capas before y after para superponer las cosas.
+El background-img siempre esta al fondo del todo, asi es como lo teníamos definido arriba.
+Esto está bien pero es limitante por lo que hemos credo en esta resolucion dos capas el before y el after.
+Semanticamente estas capas no indican nada, es el z-index el que define cual va antes y cual va despues(encima o abajo)
+Hemos recolocado la background-img en una capa que pudiesemos controlar y luego hemos colocado un color de fondo en una
+capa aun mas abajo.*/
+
+
+
+@media screen and (width > 1440px){
+  .introduction{
+    
+  background-size: 
+    60% 75%,   /* lluvia ocupa mitad izquierda */
+    20% 75%,   /* amanecer mitad derecha */
+    20% 75%;   /* foto más pequeña y centrada */
+  }
+}
