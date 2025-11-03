@@ -84,11 +84,13 @@ align-items: center;
   width: 100%;
   padding: 10px 20px;
 }
-
+.link.active {
+  color: var(--green-Matrix);
+}
 
 
 #menu-toggle:checked + .menu-icon ~ .list-navbar {
-  height: 40vh;
+  height: auto;
 }
 #menu-toggle:checked + .menu-icon .line:nth-child(1) {
   transform: rotate(45deg) translate(15px, 3px);
@@ -107,6 +109,9 @@ align-items: center;
   .hidden-btn{
     display: none;
   }
+  .link.active {
+  color: var(--main-text-color);
+}
   
   #menu-toggle,
   .menu-icon {

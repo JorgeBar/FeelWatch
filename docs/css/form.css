@@ -1,6 +1,6 @@
 .main-bg {
   background-color: var(--green-Matrix);
-  background-color: var(--opposite-bg-color);
+  background-color: var(-bg-color);
 }
 
 .card-form {

@@ -1,0 +1,136 @@
+
+body{
+    margin: 0;
+    background-color: black;
+    padding: 0;
+    color: white;
+    font-family: var(--main-font-family);
+}
+h2{
+    text-align: ;
+    margin-left: 290px;
+}
+.carousel {
+    width: 70%;
+    overflow-x: auto;
+    margin: 2rem auto ;
+    display: flex;
+    gap: 1em;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+}
+
+.carousel:nth-child(1) { anchor-name: --carousel-1;}
+.carousel:nth-child(2) { anchor-name: --carousel-2;}
+.carousel:nth-child(3) { anchor-name: --carousel-3;}
+.carousel:nth-child(4) { anchor-name: --carousel-4;}
+.carousel:nth-child(5) { anchor-name: --carousel-5;}
+.carousel:nth-child(6) { anchor-name: --carousel-6;}
+.carousel:nth-child(7) { anchor-name: --carousel-7;}
+.carousel:nth-child(8) { anchor-name: --carousel-8;}
+.carousel:nth-child(9) { anchor-name: --carousel-9;}
+.carousel:nth-child(10) { anchor-name: --carousel-10;}
+
+.carousel::scroll-marker-group{
+    display: flex;
+    justify-content: center;
+    gap: .5em;
+    margin-bottom: 2.5rem;
+}
+.card::scroll-marker{
+    content: '';
+    height: 1em;
+    width: 1em;
+    background-color:var(--green-Matrix);
+    border-radius: 50%;
+}
+.card::scroll-marker:target-current{
+ background-color:  var(--alternative-color);
+}
+.carousel::-webkit-scrollbar{
+    display: none;
+}
+.carousel::scroll-button(right), .carousel::scroll-button(left) {
+    content: '→';
+    border:none;
+    background-color: var(--green-Matrix);
+    font-size: 1rem;
+    color: white;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding-bottom: .1em;
+    cursor: pointer;
+    position: fixed;
+    position-area: right center;
+    translate: -50%;
+    
+}
+.carousel:nth-child(1)::scroll-button(right),
+.carousel:nth-child(1)::scroll-button(left){
+    position-anchor: --carousel-1;
+}
+.carousel:nth-child(2)::scroll-button(right),
+.carousel:nth-child(2)::scroll-button(left){
+    position-anchor: --carousel-2;
+}
+.carousel:nth-child(3)::scroll-button(right),
+.carousel:nth-child(3)::scroll-button(left){
+    position-anchor: --carousel-3;
+}
+.carousel:nth-child(4)::scroll-button(right),
+.carousel:nth-child(4)::scroll-button(left){
+    position-anchor: --carousel-4;
+}
+.carousel:nth-child(5)::scroll-button(right),
+.carousel:nth-child(5)::scroll-button(left){
+    position-anchor: --carousel-5;
+}
+.carousel:nth-child(6)::scroll-button(right),
+.carousel:nth-child(6)::scroll-button(left){
+    position-anchor: --carousel-6;
+}
+.carousel:nth-child(7)::scroll-button(right),
+.carousel:nth-child(7)::scroll-button(left){
+    position-anchor: --carousel-7;
+}
+.carousel:nth-child(8)::scroll-button(right),
+.carousel:nth-child(8)::scroll-button(left){
+    position-anchor: --carousel-8;
+    
+}
+.carousel:nth-child(9)::scroll-button(right),
+.carousel:nth-child(9)::scroll-button(left){
+    position-anchor: --carousel-9;
+}
+.carousel:nth-child(10)::scroll-button(right),
+.carousel:nth-child(10)::scroll-button(left){
+    position-anchor: --carousel-10;
+}
+.carousel::scroll-button(left){
+    content: '←';
+    position-area: left center;
+    translate: 50%;
+   
+}
+.carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled{
+    opacity: 0.5;
+    cursor: auto;
+}
+.card{
+    scroll-snap-align: start;
+    flex: 0 0 16rem;
+    aspect-ratio: 5 / 3;
+    background-color:rgb(26, 11, 112);
+    padding: 0;
+    border-radius: .5em;
+    text-align: center;
+    align-content: center;
+}
+
+@media (max-width: 500px ) {
+    .card{
+        flex: 0 0 100%;
+    }
+}

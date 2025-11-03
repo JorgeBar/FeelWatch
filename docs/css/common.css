@@ -40,6 +40,9 @@ a{
 .hidden-btn{
     display: none;
 }
+.link .active {
+  color: var(--green-Matrix);
+}
 
 @media screen and (width > 768px) {
     .hidden-btn{
