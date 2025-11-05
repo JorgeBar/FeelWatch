@@ -7,19 +7,22 @@ body{
     font-family: var(--main-font-family);
 }
 h2{
-    text-align: ;
-    margin-left: 290px;
+    
+    width: 70%;
+    margin: 0 auto 1rem auto ;
+    
 }
 .carousel {
     width: 70%;
     overflow-x: auto;
     margin: 2rem auto ;
     display: flex;
-    gap: 1em;
+  
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scroll-marker-group: after;
 }
+/*Probablemente acabaré quitando el scroll marker group, no le veo mucho sentido de momento*/
 
 .carousel:nth-child(1) { anchor-name: --carousel-1;}
 .carousel:nth-child(2) { anchor-name: --carousel-2;}
@@ -35,7 +38,7 @@ h2{
 .carousel::scroll-marker-group{
     display: flex;
     justify-content: center;
-    gap: .5em;
+    gap: 0.3rem;
     margin-bottom: 2.5rem;
 }
 .card::scroll-marker{
@@ -120,13 +123,36 @@ h2{
 }
 .card{
     scroll-snap-align: start;
-    flex: 0 0 16rem;
-    aspect-ratio: 5 / 3;
-    background-color:rgb(26, 11, 112);
+    flex: 0 0 12.3rem;
+    aspect-ratio: 2 / 3;
+    border-radius: 0.3rem;
+    overflow: hidden;
     padding: 0;
-    border-radius: .5em;
+    position: relative;
+    transition: transform 0.3s ease;
     text-align: center;
     align-content: center;
+    img{
+        width: 90%;
+        object-fit: cover;
+        transition: filter 0.3s ease, transform 0.3s ease;
+        
+    }
+}
+@media screen and (hover: hover){
+    .card{
+        cursor: pointer;
+        &:hover { 
+             transform: scale(1.05);
+            z-index: 10;
+        }
+        
+    }
+    .card:hover img{
+        filter: brightness(1.2); /* Ilumina la imagen */
+        /* O un borde: */
+        box-shadow:  0 0 0 3px rgba(255, 255, 255, 0.8);
+    }
 }
 
 @media (max-width: 500px ) {
