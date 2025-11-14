@@ -16,10 +16,20 @@
     
 <header class="header">
       <h1 class="logoName"><a class="link" href="index.html">FeelWatch</a></h1>
-      <nav class="nav">
+     <nav class="navbar">
+         <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <div class="line"></div>
+          <div class="line"></div>
+          <div class="line"></div>
+         </label>
+
         <ul class="list-navbar">
-          <li class="list-item"><a class="link" href="index.html">Back Home</a></li>
-         
+          <li><a class="link active" href="index.html">Home </a></li>
+          <li><a class="link" href="#about">About Us</a></li>
+          <li><a class="link" href="listas_template.html">Lists</a></li>
+          <li><a class="link" href="SignUp.html">Sign Up</a></li>
+          <li><a class="link hidden-btn">Lang</a></li>
           
         </ul>
       </nav>
@@ -53,7 +63,7 @@
  
   
         <div>
-          <button class="boton form-btn" type="submit">Create your FeelWatch account</button>
+          <button class="boton form-btn"><a href="SignUp.html">¿Don't have an account already? Click to Register</a></button>
         </div>
         <hr>
         <div class="goto">
