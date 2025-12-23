@@ -11,6 +11,14 @@ const listSchema = new Schema({
 
 },{timestamps:true});
 
+// se supone que es para el limit de listas por ejemplo
+listSchema.statics.pagin = function(filter,limit, skip,sort){
+    const query = List.find(filter)
+    query.limit(limit)
+    query.skip(skip)
+    return query.exec()
+}
+
 
 const List = mongoose.model('List', listSchema)
 export default List

@@ -1,9 +1,9 @@
 import express from 'express'
+import i18n  from './lib/i18nConfigure.js'
 import createError from 'http-errors'
 import logger from 'morgan'
 import * as homeController from './controllers/homeController.js'
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
 import connectMonggose from './lib/connectMongoose.js';
 import * as authController from './controllers/auth/authController.js'
 import * as profileController from './controllers/userProfileController.js'
@@ -17,8 +17,8 @@ await connectMonggose()
 console.log('Conectado a MongoDB')
 
 const app = express()
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
+app.use(express.static(path.join(__dirname, '../docs')));
 
 app.use(logger('dev'))
 app.use(express.json())
@@ -28,6 +28,7 @@ app.use(express.urlencoded())
  * Aplication routes
  */
 app.use(sessionManager.middleware)
+app.use(i18n.init)
 
 //Public pages
 app.get('/' , homeController.index)
@@ -62,12 +63,11 @@ app.delete('/movies/:id/delete', MovieController.deleteMovie)
 app.all('/auth/logout' , authController.logout)
 
 
-app.use(express.static(path.join(__dirname, '../docs')));
 
 //Posible futuro ejemplo de params
 app.get('/paramsInList/lists/:listsId/movies/:movieid' , homeController.paramsInList)
 //Posible futuro ejemplo de querys
-app.get('/querysinlist' , homeController.querysInList)
+app.get('/querysinlist' , homeController.filters)
 
 app.post('/create-example', homeController.createExample)
 

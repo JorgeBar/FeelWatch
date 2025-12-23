@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 import http from 'node:http'
 import debuglib from 'debug'
 import app from './app.js'

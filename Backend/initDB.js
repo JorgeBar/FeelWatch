@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import readline from 'node:readline'
 import connectMonggose from "./lib/connectMongoose.js";
 import User from "./models/User.js";

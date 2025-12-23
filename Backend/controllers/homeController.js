@@ -1,10 +1,9 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
+import path from 'node:path';
 import assert from 'node:assert';
+import list from '../models/list.js';
 import {query , body , validationResult} from 'express-validator';
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = import.meta.dirname;
 
 export function index(req, res, next) {
     res.sendFile(path.join(__dirname, '../../docs/index.html'));
@@ -17,11 +16,21 @@ export function paramsInList(req,res,next){
     res.send(`This is the movie ${movieid} and it is from the list  ${listsId} `)
 }
 
-export function querysInList(req,res,next){
+export function filters(req,res,next){
     const listsId = req.query.listsId
     const movieid = req.query.movieid
-
-    res.send(`This is the movie ${movieid} and it is from the list  ${listsId} `)
+    const sort = req.query.sort
+    const skip = req.query.skip
+    const filterList = { list} 
+        if(filterName){
+            filterList.name = filterName
+        }
+    
+        if(filterMovie){
+            filterList.movieid = filterMovie
+        }
+    
+    res.json(`This is the movie ${movieid} and it is from the list  ${listsId} `)
 }
 
 // post example
