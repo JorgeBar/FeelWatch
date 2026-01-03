@@ -11,7 +11,9 @@ export async function getLists(req, res) {
       query.owner = req.session.userId;
     }
 
-    const lists = await List.find(query);
+    const lists = await List
+    .find(query)
+    .populate('movies');
     res.json(lists);
 
   } catch (error) {
@@ -22,17 +24,19 @@ export async function getLists(req, res) {
 export async function createList(req,res,next){
 //private
     try {
-        const {name,description,date,owner,lists} = req.body;
+        const {name,description,date,owner,movies} = req.body;
 
         const list = new List ({
            name,
            description,
            date,
            owner,
-           lists
+           movies
         });
 
-        await lists.save();
+        await list.save();
+        res.status(201).json({ message: "Lista creada", list });
+
     } catch (error) {
         next(error)
     }
@@ -40,7 +44,9 @@ export async function createList(req,res,next){
 export async function getListById(req,res,next){
 //public
 try {
-    const list = await List.findById(req,res,next);
+    const list = await List
+    .findById(req.params.listId)
+    .populate('movies', 'name imagePoster');
     if (!list) {
         return res.status(404).json({error:"Lista no encontrada"});
     }
@@ -50,6 +56,28 @@ try {
     next(error)
 }
 }
+export async function updateList(req,res,next){
+    try {
+      const userId = req.session.userId;
+      const listId = req.params.listId;
+
+      const list = await List.findOne({_id: listId})
+      if(!list) {
+         console.warn
+        (`WARNING - el usuario ${userId} está intentando editar una lista inexistente :${listId}`);
+        return res.status(404).json({ error: "Lista no encontrada" });
+      }
+      if (list.owner.toString() !== userId) {
+        console.warn
+        (`WARNING - el usuario ${userId} está intentando editar una lista de otro usuario:${listId}`);
+        return res.status(403).json({ error: "No autorizado" });
+      }
+      await List.updateOne({_id:listId}, {name: req.body.name, description: req.body.description})
+      res.json({message: "Lista editada"})
+    } catch (error) {
+      next(error)
+    }
+    }
 export async function deleteList(req,res,next){
 //private
     try {
@@ -72,8 +100,6 @@ export async function deleteList(req,res,next){
        res.json({ message: "Lista eliminada correctamente"})
     } catch (error) {
         next(error)
+      }
     }
-}
-export async function updateList(req,res,next){
-//private
-}
+    

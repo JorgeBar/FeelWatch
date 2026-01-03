@@ -1,1 +1,7 @@
-{}
+{
+  "header": {
+    "home": "Accueil",
+    "lists": "Listes",
+    "description": "Description"
+  }
+}

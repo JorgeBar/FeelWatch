@@ -1,1 +1,17 @@
-{}
+{
+    "header":{
+        "home": "Home",
+        "lists": "Lists",
+        "description": "Description"
+    },
+    "Lists":{
+
+    },
+    "Register":{
+
+    },
+    "Login":{
+    },
+    "Movie":{}
+    
+}

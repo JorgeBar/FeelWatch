@@ -10,7 +10,6 @@ const movieSchema = new Schema({
     imageCarousel:{type:String},
     imagePoster:{type:String},
     owner: {type: Schema.Types.ObjectId, ref: 'User'},
-    genre: [{type: mongoose.Schema.Types.ObjectId, ref : "List"}]
 
 },{timestamps:true});
 

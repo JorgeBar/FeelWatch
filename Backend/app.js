@@ -1,5 +1,6 @@
 import express from 'express'
 import i18n  from './lib/i18nConfigure.js'
+import cookieParser from 'cookie-parser'
 import createError from 'http-errors'
 import logger from 'morgan'
 import * as homeController from './controllers/homeController.js'
@@ -10,6 +11,7 @@ import * as profileController from './controllers/userProfileController.js'
 import * as sessionManager from './lib/sessionManager.js'
 import * as MovieController from './controllers/MovieController.js'
 import * as ListController from './controllers/ListController.js'
+import * as langController from './controllers/langController.js'
 import upload from './lib/uploadConfigure.js'
 
 
@@ -23,12 +25,20 @@ app.use(express.static(path.join(__dirname, '../docs')));
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded())
+app.use(cookieParser())
 
 /**
  * Aplication routes
  */
 app.use(sessionManager.middleware)
 app.use(i18n.init)
+app.use((req, res, next) => {
+  const lang = req.cookies['feelwatch-locale'] || 'en';
+  req.setLocale(lang);
+  next();
+});
+
+app.get('/change-locale/:locale', langController.changeLocale)
 
 //Public pages
 app.get('/' , homeController.index)

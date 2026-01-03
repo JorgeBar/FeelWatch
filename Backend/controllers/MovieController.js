@@ -1,10 +1,10 @@
 import Movie from "../models/movie.js";
 
-
-
 export async function getMovieById(req, res, next) {
   try {
-    const movie = await Movie.findById(req.params.id);
+    const movie = await Movie
+    .findById(req.params.id)
+    .populate('owner', 'username')
     if (!movie) {
       return res.status(404).json({ error: "Película no encontrada" });
     }
@@ -16,7 +16,7 @@ export async function getMovieById(req, res, next) {
 
 export async function createMovie(req, res, next) {
   try {
-    const { name, director, date, genre, imageCarousel, imagePoster } =
+    const { name, director,description, date, genre, imageCarousel, imagePoster } =
       req.body;
 
     //TO DO  validaciones
@@ -31,11 +31,12 @@ export async function createMovie(req, res, next) {
       imageCarousel,
       imagePoster,
       owner: req.session.userId,
-      list: req.params.listId
+ 
     });
 
     //se guarda en la bd
     await movie.save();
+    res.json({message: 'Película creada'})
     //enviamos el json y supongo que volveremos mmm a la creacion de la lista me hace sentido
   } catch (error) {
     next(error);
@@ -52,18 +53,18 @@ export async function updateMovie(req,res,next) {
       // verificar que existe
       if (!movie) {
         console.warn
-        (`WARNING - el usuario ${userId} está intentando elminar una película inexistente :${movieId}`);
+        (`WARNING - el usuario ${userId} está intentando editar una película inexistente :${movieId}`);
         return res.status(404).json({ error: "Película no encontrada" });
       }
       if (movie.owner.toString() !== userId) {
         console.warn
-        (`WARNING - el usuario ${userId} está intentando elminar una película de otro usuario:${movieId}`);
+        (`WARNING - el usuario ${userId} está intentando editar una película de otro usuario:${movieId}`);
         return res.status(403).json({ error: "No autorizado" });
     
       }
-      await Movie.updateOne({ _id: movieId });
+      await Movie.updateOne({ _id: movieId }, {name: req.body.name, description: req.body.description});
     
-      res.json({ message: "Película eliminada correctamente" });
+      res.json({ message: "Película actualizada correctamente" });
     } catch (error) {
         next(error)
     }

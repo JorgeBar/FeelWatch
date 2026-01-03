@@ -10,12 +10,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env FEELWATCH_ENV=production node server.js",
     "dev": "cross-env DEBUG=FeelWatch:* FEELWATCH_ENV=development node --watch server.js",
-    "initDB": "cross-env DEBUG=FeelWatch:* "
+    "initDB": "cross-env DEBUG=FeelWatch:* node initDB.js"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
     "chance": "^1.1.13",
     "connect-mongo": "^6.0.0",
+    "cookie-parser": "^1.4.7",
     "cross-env": "^10.1.0",
     "debug": "^4.4.3",
     "dotenv": "^17.2.3",

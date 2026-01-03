@@ -7,7 +7,7 @@ const listSchema = new Schema({
     description: {type:String, required:true} ,
     date: {type:String },
     owner: {type: Schema.Types.ObjectId, ref: 'User'},
-    list: [{type: mongoose.Schema.Types.ObjectId, ref : "Movie"}]
+    movies: [{type: mongoose.Schema.Types.ObjectId, ref : "Movie"}]
 
 },{timestamps:true});
 
