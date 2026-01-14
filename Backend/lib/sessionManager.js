@@ -16,7 +16,6 @@ export const middleware = session({
 })
 
 /* 
-Para poca concurrencia guardamos la sesion del user en MongoDB con la libería connetc-mongo Las sessiones requieren que haya comunicacion constante entre servidor y base de datos.
-Si hay mediana concurrencia usamos Redis 
-Si hay mucha concurrencia usamos JWT  Solo hay comunicacion entre servidor y bd cuando haces login. El resto del tiempo podemos hacer peticiones a urls solo con el jwt
-Ahorrando por tanto la tarea de la comunicación la bd cconstante*/
+Esto lo usabamos para ejs.
+
+*/

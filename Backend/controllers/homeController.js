@@ -16,7 +16,7 @@ export function paramsInList(req,res,next){
     res.send(`This is the movie ${movieid} and it is from the list  ${listsId} `)
 }
 
-export function filters(req,res,next){
+export async function filters(req,res,next){
     const listsId = req.query.listsId
     const movieid = req.query.movieid
     const sort = req.query.sort
@@ -29,7 +29,7 @@ export function filters(req,res,next){
         if(filterMovie){
             filterList.movieid = filterMovie
         }
-    
+    const lists = await lists.list(filter,resourceLimits,skip,sort)
     res.json(`This is the movie ${movieid} and it is from the list  ${listsId} `)
 }
 

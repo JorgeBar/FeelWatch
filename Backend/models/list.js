@@ -7,6 +7,7 @@ const listSchema = new Schema({
     description: {type:String, required:true} ,
     date: {type:String },
     owner: {type: Schema.Types.ObjectId, ref: 'User'},
+    tags: { type: [String], default: [] },
     movies: [{type: mongoose.Schema.Types.ObjectId, ref : "Movie"}]
 
 },{timestamps:true});

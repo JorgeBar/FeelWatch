@@ -8,11 +8,13 @@ import path from 'node:path';
 import connectMonggose from './lib/connectMongoose.js';
 import * as authController from './controllers/auth/authController.js'
 import * as profileController from './controllers/userProfileController.js'
-import * as sessionManager from './lib/sessionManager.js'
 import * as MovieController from './controllers/MovieController.js'
 import * as ListController from './controllers/ListController.js'
 import * as langController from './controllers/langController.js'
 import upload from './lib/uploadConfigure.js'
+import * as jwtAuth from './lib/jwtAuthMiddleware.js'
+import * as swaggerUI from './lib/swaggerMiddleware.js'
+
 
 
 await connectMonggose()
@@ -24,19 +26,20 @@ app.use(express.static(path.join(__dirname, '../docs')));
 
 app.use(logger('dev'))
 app.use(express.json())
-app.use(express.urlencoded())
+app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
 /**
  * Aplication routes
  */
-app.use(sessionManager.middleware)
 app.use(i18n.init)
 app.use((req, res, next) => {
   const lang = req.cookies['feelwatch-locale'] || 'en';
   req.setLocale(lang);
   next();
 });
+//app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specification))
+
 
 app.get('/change-locale/:locale', langController.changeLocale)
 
@@ -49,28 +52,31 @@ app.post('/auth/login', authController.postLogin)
 app.post('/auth/register' , authController.postRegister)
 
 app.get('/lists', ListController.getLists )
+app.get('/lists/:id' , ListController.getListById)
+
 
 //Private Pages
-app.post('/lists' ,ListController.createList)
-app.get('/lists/:id' , ListController.getListById)
-app.put('/lists/:id' , ListController.updateList)
-app.delete('/lists/:id' , ListController.deleteList)
+app.get('/lists/create',jwtAuth.guard, ListController.getCreateList )
+app.post('/lists' , jwtAuth.guard, ListController.createList)
+app.put('/lists/:id' ,jwtAuth.guard, ListController.updateList)
+app.delete('/lists/:id' ,jwtAuth.guard, ListController.deleteList)
 
-app.get('/profile/:id' ,profileController.getProfile)
-app.put('/profile/:id', profileController.updateProfile)
+app.get('/profile/:id' ,jwtAuth.guard,profileController.getProfile)
+app.put('/profile/:id',jwtAuth.guard,  profileController.updateProfile)
+app.delete('/profile/:id', jwtAuth.guard, profileController.DeleteAccount)
 
 
-app.get('/lists/:id/movies' , MovieController.createMovie)
-app.post('/lists/:id/movies' ,upload.fields([ 
+app.get('/lists/:id/movies/create' ,jwtAuth.guard, MovieController.getCreateMovie)
+app.post('/lists/:id/movies' ,jwtAuth.guard,upload.fields([ 
     { name: "carousel", maxCount: 1 },
     { name: "poster", maxCount: 1 },
     { name: "avatar", maxCount: 1 }] ),
      MovieController.createMovie)
 app.get('/movies/:id' , MovieController.getMovieById )
-app.put('/movies/:id/edit', MovieController.updateMovie)
-app.delete('/movies/:id/delete', MovieController.deleteMovie)
+app.put('/lists/:id/movies/:movieId',jwtAuth.guard, MovieController.updateMovie)
+app.delete('/lists/:id/movies/:movieId',jwtAuth.guard, MovieController.deleteMovie)
 
-app.all('/auth/logout' , authController.logout)
+app.all('/auth/logout' ,jwtAuth.guard, authController.logout)
 
 
 
