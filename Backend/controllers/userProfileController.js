@@ -16,10 +16,41 @@ export async function getProfile(req, res, next) {
   }
 }
 
-export function updateProfile(req, res, next) {}
-// i guess aqui podremos modificar el username ,el name,añadir la direccion si queremos
-// poner la foto , la fecha de nacimiento
+export async function updateProfile(req, res, next) {
+
+  try {
+    await body('username')
+    .notEmpty()
+    .isString()
+    .isLength({min:5})
+    .run(req);
+  
+     const errors = validationResult(req);
+            if (!errors.isEmpty()) {
+                return res.status(400).json({ errors: errors.array()});
+            }
+    const {username} = req.body;
+    const userId = req.apiUserId;
+    const user = await User.findById(userId);
+  
+    if (!user) {
+      console.warn(
+        `WARNING - el usuario ${userId} está intentando editar una perfil de otro usuario`
+      );
+      return res.status(401).json({ error: "No autorizado" });
+    }
+    
+    
+    await User.updateOne({ _id: userId }, { username, 
+      avatar: req.file? req.file.filename : user.avatar });
+    res.json({ message: "Perfil actualizado" });
+  } catch (error) {
+    next(error);
+  }
+}
 export function changePassword(req, res, next) {}
+
+export function forgetPassword(req,res,next){}
 // No se si tiene que ir aqui pero deberíamos quizas poder cambiar la contraseña
 export async function DeleteAccount(req, res, next) {
   try {
@@ -29,14 +60,13 @@ export async function DeleteAccount(req, res, next) {
     if (!user) {
       return res.json({ message: "Usuario no encontrado" });
     }
-      await List.deleteMany({owner: userId });
+    await List.deleteMany({ owner: userId });
 
-      await Movie.deleteMany({owner: userId, isTemplate: false });
+    await Movie.deleteMany({ owner: userId, isTemplate: false });
 
-      await User.deleteOne({ _id: userId});
-      res.json({ message: "Cuenta eliminada con éxito" });
-    }
-   catch (error) {
+    await User.deleteOne({ _id: userId });
+    res.json({ message: "Cuenta eliminada con éxito" });
+  } catch (error) {
     next(error);
   }
 }
