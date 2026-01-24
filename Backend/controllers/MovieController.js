@@ -1,5 +1,7 @@
 import Movie from "../models/movie.js";
 import List from "../models/list.js";
+import { publishResizePoster,publishResizeCarousel  } from '../lib/publisher.js';
+
 
 export async function getMovieById(req, res, next) {
   try {
@@ -58,6 +60,9 @@ export async function createMovie(req, res, next) {
         owner: null,
         isTemplate: true,
       });
+    publishResizeCarousel(userId, req.files.carousel[0].filename)
+    publishResizePoster(userId, req.files.poster[0].filename)
+
 
       await template.save();
     }

@@ -1,4 +1,6 @@
 import User from "../models/User.js";
+import { publishResizeAvatar } from '../lib/publisher.js';
+import {body ,validationResult} from 'express-validator'
 
 export async function getProfile(req, res, next) {
   try {
@@ -17,6 +19,7 @@ export async function getProfile(req, res, next) {
 }
 
 export async function updateProfile(req, res, next) {
+  console.log("UPDATE PROFILE HIT", Date.now());
 
   try {
     await body('username')
@@ -39,7 +42,7 @@ export async function updateProfile(req, res, next) {
       );
       return res.status(401).json({ error: "No autorizado" });
     }
-    
+    publishResizeAvatar(userId , req.file.filename)
     
     await User.updateOne({ _id: userId }, { username, 
       avatar: req.file? req.file.filename : user.avatar });
@@ -48,10 +51,35 @@ export async function updateProfile(req, res, next) {
     next(error);
   }
 }
-export function changePassword(req, res, next) {}
+export async function updatePassword(req, res, next) {
+  try {
+    const {currentPassword, newPassword} = req.body
+    const userId = req.apiUserId
+    const user = await User.findById(userId)
 
-export function forgetPassword(req,res,next){}
-// No se si tiene que ir aqui pero deberíamos quizas poder cambiar la contraseña
+    if(!user || !(await user.comparePassword(currentPassword)) ){
+            return res.status(401).json({ error: "Contraseña antigua, poner una nueva" })
+        }
+    const hashedNewPassword = await User.hashPassword(newPassword);
+    user.password = hashedNewPassword
+    
+    await user.save() 
+     jwt.sign({_id: user.id}, process.env.JWT_SECRET, {
+                expiresIn: '2d'
+            }, (err, tokenJWT)=>{
+                if (err)   {
+                    next(err)
+                    return
+                }
+                res.json({tokenJWT})
+                
+            })   
+  } catch (error) {
+    
+  }
+}
+
+
 export async function DeleteAccount(req, res, next) {
   try {
     const userId = req.apiUserId;

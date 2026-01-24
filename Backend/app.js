@@ -6,7 +6,9 @@ import logger from 'morgan'
 import * as homeController from './controllers/homeController.js'
 import path from 'node:path';
 import connectMonggose from './lib/connectMongoose.js';
+import { connectRabbit } from './lib/publisher.js'
 import * as authController from './controllers/auth/authController.js'
+//import { startConsumer } from './lib/consumer.js'
 import * as profileController from './controllers/userProfileController.js'
 import * as MovieController from './controllers/MovieController.js'
 import * as ListController from './controllers/ListController.js'
@@ -18,6 +20,8 @@ import * as swaggerUI from './lib/swaggerMiddleware.js'
 
 
 await connectMonggose()
+await connectRabbit()
+//await startConsumer()
 console.log('Conectado a MongoDB')
 
 const app = express()
@@ -47,9 +51,11 @@ app.get('/change-locale/:locale', langController.changeLocale)
 app.get('/' , homeController.index)
 app.get('/auth/login', authController.Login)
 app.get('/auth/register' , authController.getRegister)
+app.get('auth/forgotPassword', authController.getforgotPassword)
 
 app.post('/auth/login', authController.postLogin)
 app.post('/auth/register' , authController.postRegister)
+app.post('auth/forgotPassword', authController.forgotPassword)
 
 app.get('/lists', ListController.getLists )
 app.get('/lists/:id' , ListController.getListById)
@@ -62,7 +68,8 @@ app.put('/lists/:id' ,jwtAuth.guard, ListController.updateList)
 app.delete('/lists/:id' ,jwtAuth.guard, ListController.deleteList)
 
 app.get('/profile/:id' ,jwtAuth.guard,profileController.getProfile)
-app.put('/profile/:id',jwtAuth.guard,  profileController.updateProfile)
+app.put('/profile/:id',jwtAuth.guard, upload.single('avatar'),  profileController.updateProfile)
+app.put('/profile/:id/password', profileController.updatePassword) 
 app.delete('/profile/:id', jwtAuth.guard, profileController.DeleteAccount)
 
 

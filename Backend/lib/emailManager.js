@@ -14,6 +14,22 @@ export async function createTransport() {
 
   return nodemailer.createTransport(options)
 }
+export async function sendEmail(to, subject, body) {
+  const transport = await createTransport();
+  const result = await transport.sendMail({
+    from: process.env.EMAIL_SERVICE_FROM,
+    to,
+    subject,
+    html: body,
+  });
+
+  if (process.env.FEELWATCH_ENV === 'development') {
+    //console.log(`Email simulado. Preview: ${result.messageId}`);
+  }
+
+  return result;
+}
+
 
 export function generatePreviewURL(sendResult){
     return nodemailer.getTestMessageUrl(sendResult)
