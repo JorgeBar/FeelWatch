@@ -1,6 +1,6 @@
 export async function createUser(username, email, password){
 
-    const response = await fetch("http://localhost:3000/auth/register", {
+    const response = await fetch("https://feelwatch.onrender.com/register", {
         method: "POST",
         body: JSON.stringify({
             username,
