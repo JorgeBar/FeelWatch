@@ -13,9 +13,13 @@ export async function postLogin(req, res, next) {
     const { email, password } = req.body;
     //Validar que email y password llegan
     //buscar el usuario en la base de datos
+  
+
     const user = await User.findOne({ email: email.toLowerCase() });
+   
     //si no lo encuentro, o la contraseña no coincide --> eerror
     if (!user || !(await user.comparePassword(password))) {
+      console.log('Password match:', password)
       return res.status(401).json({ error: "Credenciales incorrectas" });
     }
 

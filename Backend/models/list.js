@@ -1,6 +1,5 @@
 import mongoose, {Schema} from "mongoose";
-import User from "./User.js";
-import Movie from "./movie.js"
+
 
 const listSchema = new Schema({
     name: {type: String, required: true, unique: true},

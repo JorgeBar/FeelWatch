@@ -1,10 +1,12 @@
 import jwt from 'jsonwebtoken'
-import createError from 'http-errors'
 
 export function  guard(req,res,next){
     //sacar el tokenJWT de la cabecera, body, o de la query-string
-    const tokenJWT = req.get('Authorization') || req.body?.jwt || req.query?.jwt
-
+    let tokenJWT = req.get('Authorization') || req.body?.jwt || req.query?.jwt
+   
+    if (tokenJWT?.startsWith('Bearer ')) {
+    tokenJWT = tokenJWT.slice(7)  // quita "Bearer "
+    }
     // Si no tengo token --> error
     if (!tokenJWT){
         console.warn('Auth guard: no token provided');

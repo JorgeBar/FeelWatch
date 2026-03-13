@@ -10,7 +10,7 @@ export async function getLists(req, res) {
       if (!req.session.userId) {
         return res.status(401).json({ error: "No autorizado" });
       }
-      query.owner = req.session.userId;
+      query.owner = req.apiUserId;
     }
     // Filtro por tag
     if (req.query.tags) {
@@ -40,7 +40,7 @@ export async function getLists(req, res) {
     }
 
     const lists = await List.find(query)
-      .populate("movies", "name imagePoster")
+      .populate("movies")
       .sort(sortOptions)
       .skip(skip)
       .limit(limit);
@@ -152,7 +152,9 @@ export async function updateList(req, res, next) {
 
     await List.updateOne(
       { _id: listId },
-      { name: req.body.name, description: req.body.description }
+      { name: req.body.name,
+         description: req.body.description,
+         tags:req.body.tags }
     );
     res.json({ message: "Lista editada" });
   } catch (error) {

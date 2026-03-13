@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import i18n  from './lib/i18nConfigure.js'
 import cookieParser from 'cookie-parser'
 import createError from 'http-errors'
@@ -27,9 +28,14 @@ console.log('Conectado a MongoDB')
 const app = express()
 const __dirname = import.meta.dirname;
 app.use(express.static(path.join(__dirname, '../docs')));
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 app.use(logger('dev'))
 app.use(express.json())
+app.use(cors({
+  origin: 'http://127.0.0.1:5500'
+}))
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
@@ -74,10 +80,11 @@ app.delete('/profile/:id', jwtAuth.guard, profileController.DeleteAccount)
 
 
 app.get('/lists/:id/movies/create' ,jwtAuth.guard, MovieController.getCreateMovie)
+console.log('Registrando ruta POST /lists/:id/movies')
+
 app.post('/lists/:id/movies' ,jwtAuth.guard,upload.fields([ 
     { name: "carousel", maxCount: 1 },
-    { name: "poster", maxCount: 1 },
-    { name: "avatar", maxCount: 1 }] ),
+    { name: "poster", maxCount: 1 }] ),
      MovieController.createMovie)
 app.get('/movies/:id' , MovieController.getMovieById )
 app.put('/lists/:id/movies/:movieId',jwtAuth.guard, MovieController.updateMovie)

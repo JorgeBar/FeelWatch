@@ -7,7 +7,8 @@ export async function getMovieById(req, res, next) {
   try {
     const movie = await Movie.findById(req.params.id).populate(
       "owner",
-      "username"
+      "username",
+      
     );
     if (!movie) {
       return res.status(404).json({ error: "Película no encontrada" });
@@ -24,10 +25,16 @@ export async function getCreateMovie(req, res, next) {
 }
 
 export async function createMovie(req, res, next) {
+  console.log('createMovie ejecutándose')
   try {
     const { name, director, synopsis, description, date } = req.body;
-    const imageCarousel = req.files?.carousel?.[0].path || null;
-    const imagePoster = req.files?.poster?.[0].path || null;
+    const imageCarousel = req.files?.carousel?.[0]
+    ? `/photoCarousel/${req.files.carousel[0].filename}`
+    : null;
+
+    const imagePoster = req.files?.poster?.[0]
+    ? `/photoPoster/${req.files.poster[0].filename}`
+    : null;
 
     const listId = req.params.id;
     const userId = req.apiUserId;
@@ -60,9 +67,12 @@ export async function createMovie(req, res, next) {
         owner: null,
         isTemplate: true,
       });
-    publishResizeCarousel(userId, req.files.carousel[0].filename)
-    publishResizePoster(userId, req.files.poster[0].filename)
-
+    if (req.files?.carousel?.[0]) {
+      publishResizeCarousel(userId, req.files.carousel[0].filename);
+    }
+    if (req.files?.poster?.[0]) {
+      publishResizePoster(userId, req.files.poster[0].filename);
+    }
 
       await template.save();
     }
