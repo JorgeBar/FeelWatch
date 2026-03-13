@@ -1,16 +1,22 @@
 .main-bg {
   background-color: var(--green-Matrix);
-  background-color: var(-bg-color);
+  background-color: #0d1b0d;
+  
+  
 }
 
 .card-form {
-  background-color: var(--bg-color);
+  background-color:#1a2e1a;
   border-radius: 4px;
+  border: 1px solid #00cc3380;
   width: 100%;
   max-width: 420px;
   padding: 3rem 2rem;
-  margin: 0 auto;
-  
+  margin: 4rem auto 0 auto;
+
+ label{
+  color:#b8e6b8 ;
+ } 
   
 }
 .form__input {
@@ -24,6 +30,9 @@
     padding: 0.5rem;
     border-radius: 5px;
     border: none;
+    color: white;
+    background-color:#0f1f0f ;
+    border-color:#2a4a2a ;
   }
 }
 

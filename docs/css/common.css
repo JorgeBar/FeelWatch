@@ -26,7 +26,12 @@ a{
     padding: 0.6rem;
     text-align: center;
     text-decoration: none;
+    margin-bottom: 10px;
+    color:#b8e6b8 ;
     transition: background-color 0.3s linear;
+    a{
+      color:#b8e6b8;
+    }
 }
 .matrix-prueba {
   text-align: center;

@@ -15,7 +15,8 @@
   border: solid black;
   padding: 1rem;
   img {
-    width: 100%;
+    width: 119px;
+    height: 178px;
   }
   h3{
     text-align: center;
@@ -45,7 +46,8 @@
   img{
     cursor: pointer;
     &:hover {
-      width: 190px;
+      width: 130px;
+      height: 180px;
       z-index: 10;
       position: relative;
     }
@@ -53,6 +55,14 @@
 }
 
 @media screen and (width > 1024px) {
+
+  .listsmovies{
+    img{
+      width: 203.5px;
+      height: 304px;
+    }
+
+}
   .bottom-part {
     flex-direction: row; 
     justify-content: center;
@@ -76,6 +86,7 @@
 
 }
 @media screen and (width > 1440px) {
+  
   .side-images {
     img.hide {
       display: none;

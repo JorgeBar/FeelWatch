@@ -12,6 +12,10 @@
 .fancysentence {
   text-align: center;
   font-size: 1.2rem;
+  a{
+    color: white;
+  }
+
 }
 .imgintrod {
   width: 100vw;

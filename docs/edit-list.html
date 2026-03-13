@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/common.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/frontpage/introduction.css">
+    <link rel="stylesheet" href="css/frontpage/aboutus.css" />
+    <link rel="stylesheet" href="css/frontpage/listademo.css">
+    <link rel="stylesheet" href="css//footer.css" />
+    <link rel="stylesheet" href="css/create-list.css">
+    <title>Creating List</title>
+</head>
+<body class="main-bg">
+    <header class="header">
+      <h1 class="logoName"><a  href="index.html">FeelWatch</a></h1>
+      <nav class="nav">
+        <ul class="list-navbar">
+          <li class="list-item"><a class="link" href="index.html">Home</a></li>
+          <li class="list-item hidden-btn"><a class="link" href="listas_template.html">Lists</a></li>          <li class="list-item hidden-btn"><a class="link" href="SignUp.html">SignUp</a></li>
+          
+        </ul>
+      </nav>
+    </header>
+        <section class="create-list">
+
+          <h1>Edit List</h1>
+          
+          <form class="form" id="edit-list" method="POST">
+            <label for="name">Name</label>
+            <input 
+            type="text"
+            id="title-list"
+            name="name"
+            autocomplete="off"
+            required
+            value="">
+            <label for="description">Description</label>
+            <textarea 
+            name="description" 
+            id="description-list" 
+            cols="30" 
+            rows="10" 
+            required>
+            </textarea>
+            <label for="tags">Tags</label>
+            <input
+            type="text"
+            id="list-tags"
+            name="tags"
+            value=""
+            />
+            <!--<button type="submit">Añadir película</button>-->
+            <button type="submit">Save List</button>
+          </form>
+        </section>
+
+        <script type="module" src="./lists/edit-list/edit.js"></script>
+</body>
+</html>

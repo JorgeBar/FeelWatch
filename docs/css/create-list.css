@@ -1,0 +1,51 @@
+.main-bg{
+background-color:#49111C ;
+font-size: 18px;
+}
+.hidden {
+    display: none;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  padding: 4rem;
+  background: rgba(0,0,0,0.5);
+ 
+}
+.create-list{
+    max-width: 300px;
+    margin: 4rem auto 0 auto;
+}
+
+.movie{
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.form{
+    background-color: #14181c;
+    display: flex;
+    flex-direction: column;
+
+
+    label{
+        padding: 0.5rem 0.4rem;
+    } 
+    input{
+        padding: 0.2rem 0.4rem;
+        font-size: 12px;
+    }
+    .textarea{
+     padding: 5px 10px;
+     font-size: 12px;
+    }
+    .addMovie {
+        padding: 2rem 0rem;
+        .form-btn{
+            margin-top: 10px;
+        } 
+    }
+}

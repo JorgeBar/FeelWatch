@@ -1,18 +1,32 @@
-console.log("FeelWatch is running!");
+import { listsController } from "./lists/list-controller.js"
+import { notificationController } from "./notification/notification-controller.js"
+import { sessionController } from "./session/session-controller.js"
+import {spinnerController} from "./spinner/spinner-controller.js"
 
-function Alerts(msg){ 
-    alert(msg); }
+document.addEventListener("DOMContentLoaded", () => {
 
-const Botones = [
-{id: "blowBtn", mensaje: "Te vuela la cabeza bro"},
-{id: "RainBtn", mensaje: "La que está cayanedo"},
-{id: "NostBtn", mensaje: "Hace mucho que no la veo"},
-{id: "SadBtn", mensaje: "Estoy un poco meh"},
-{id: "newBtn", mensaje: "Crea tu lista"}
-]
-
-Botones.forEach(element => {
-  const boton = document.getElementById(element.id)
-  console.log(boton);
-  boton.addEventListener('click',()=>Alerts(element.mensaje))
-});
+   const listContainer = document.querySelector("#lists-loading")
+   const notificationContainer = document.querySelector("#notification-test")
+   const sipnnerContainer = document.querySelector('.spinner')
+   const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
+   
+   if (notificationContainer && listContainer) {
+      const {showNotification} = notificationController(notificationContainer)
+      
+      listContainer.addEventListener("loading-lists-info", (event) =>{
+         showNotification(event.detail.message, event.detail.type)
+      })
+   }
+   
+   if (sipnnerContainer && listContainer) {
+      const {showSpinner} = spinnerController(sipnnerContainer)
+      
+      listContainer.addEventListener("loading-spinner", () =>{
+         showSpinner()
+      })
+   }
+   
+ 
+   
+   sessionController(sessionContainers)
+})
