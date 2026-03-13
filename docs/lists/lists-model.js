@@ -1,6 +1,6 @@
 export async function getLists() {
   try {
-    const response = await fetch("http://localhost:3000/lists/");
+    const response = await fetch("https://feelwatch.onrender.com/lists/");
     if (!response.ok) {
       throw new Error("Recurso no existente");
     }
@@ -14,7 +14,7 @@ export async function getLists() {
 
 export async function getListById(listId) {
   try {
-    const response = await fetch(`http://localhost:3000/lists/${listId}`);
+    const response = await fetch(`https://feelwatch.onrender.com/lists/${listId}`);
     if (!response.ok) {
       throw new Error("Recurso no existente");
     }

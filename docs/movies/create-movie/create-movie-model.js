@@ -21,7 +21,7 @@ export async function createMovie(
     formData.append('carousel', imageCarousel)
     formData.append('poster', imagePoster)
     formData.append('trailer', trailer)
-    const response = await authenticatedFetch(`http://localhost:3000/lists/${listId}/movies`,{
+    const response = await authenticatedFetch(`https://feelwatch.onrender.com/lists/${listId}/movies`,{
             method: "POST",
             body: formData,
             headers: {

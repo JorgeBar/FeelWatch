@@ -2,7 +2,7 @@ import { authenticatedFetch } from "../../utils/authenticated.js"
 
 export async function createList(name,description,tags){
     const token = localStorage.getItem('jwt')
-    const response = await authenticatedFetch("http://localhost:3000/lists", {
+    const response = await authenticatedFetch("https://feelwatch.onrender.com/lists", {
         method: "POST",
         body: JSON.stringify({
             name,
