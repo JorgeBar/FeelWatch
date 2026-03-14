@@ -34,7 +34,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 app.use(logger('dev'))
 app.use(express.json())
 app.use(cors({
-  origin: 'https://enchanting-froyo-d3e826.netlify.app'
+  origin: 'https://feelwatch.netlify.app'
 }))
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
