@@ -27,6 +27,8 @@ export const buildList = (list, checkOwner) => {
   return newList;
 };
 
+const BASE_URL = "https://feelwatch.onrender.com";
+
 export const buildCarousel = (list,index,checkOwner)=>{
   const fragment = document.createDocumentFragment()
   const titlelist = document.createElement("h2");
@@ -66,7 +68,7 @@ carousel.classList.add(`carousel-${index}`)
   
   ${list.movies.map(movie=> 
     `<div class="card">
-    <h3><img src="http://localhost:3000${movie.imageCarousel}"></h3>
+    <h3><img src="${BASE_URL}${movie.imageCarousel}"></h3>
     </div>`).join('')}
     
     `
