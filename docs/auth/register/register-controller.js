@@ -45,7 +45,7 @@ export function signupController(form){
     async function handleCreateUser(username,useremail,password){
         try {
         await createUser(username,useremail,password)
-        window.location.href = "/docs/login.html"
+        window.location.href = "login.html"
 
         } catch (error) {
             alert("error")
