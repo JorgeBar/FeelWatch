@@ -27,6 +27,6 @@ async function handleLoginUser(useremail, password) {
 
     localStorage.setItem('jwt', token)
 
-    window.location.href = "index.html";
+    window.location.href = "/index.html";
  
 }
