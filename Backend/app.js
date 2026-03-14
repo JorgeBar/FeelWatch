@@ -35,6 +35,7 @@ app.use(logger('dev'))
 app.use(express.json())
 app.use(cors({
   origin: 'https://feelwatch.netlify.app'
+  //be aware of changes here 
 }))
 app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
