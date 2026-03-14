@@ -54,7 +54,7 @@ async function initMovies(){
         director: 'Wachowski brothers',
         synopsis:"A computer hacker discovers that reality as he knows it is actually a simulated world created by machines. He joins a rebellion to fight against the artificial intelligence controlling humanity and free people from their digital prison.",
         date:1999,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/TheMatrix.webp",
+        imageCarousel:"/fotosinitDB/TheMatrix.webp",
         imagePoster:"",
         trailer:"https://www.youtube.com/watch?v=m8e-FF8MsqU"
 
@@ -66,7 +66,7 @@ async function initMovies(){
         director: 'Steven Spierlberg',
         synopsis:"Peter Pan has grown up into Peter Banning, a workaholic lawyer who has forgotten his past. When Captain Hook kidnaps his children, he must return to Neverland and remember how to be Peter Pan again to save them and rediscover his inner child.",
         date:1991,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/Hook.webp",
+        imageCarousel:"/fotosinitDB/Hook.webp",
         imagePoster:"",
         trailer:"https://www.youtube.com/watch?v=c-vwgt8cwEM"
         
@@ -78,7 +78,7 @@ async function initMovies(){
         director: 'Christopher Nolan',
         synopsis:"In a dying Earth's future, a group of astronauts travels through a wormhole near Saturn to find a new habitable planet for humanity. A former pilot must leave his family behind on a desperate mission that challenges our understanding of love, time, and sacrifice.",
         date:2014,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/Interstellar.webp",
+        imageCarousel:"/fotosinitDB/Interstellar.webp",
         imagePoster:'',
         trailer:"https://www.youtube.com/watch?v=2LqzF5WauAw"
 
@@ -89,7 +89,7 @@ async function initMovies(){
         director: 'Peter Jackson',
         synopsis:"A young hobbit inherits a powerful ring that could destroy the world if it falls into evil hands. He embarks on an epic journey with a fellowship of different races to destroy the ring in the fires of Mount Doom before darkness consumes Middle-earth.",
         date:2001,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/TheFeloshipOfTheRing.webp",
+        imageCarousel:"/fotosinitDB/TheFeloshipOfTheRing.webp",
         imagePoster:"",
         trailer:"https://www.youtube.com/watch?v=V75dMMIW2B4"
 
@@ -100,7 +100,7 @@ async function initMovies(){
         director: 'Richard Curtis',
         synopsis: "A young man discovers he can travel through time and uses this ability to improve his love life. However, he learns that even with time travel, he cannot escape life's inevitable challenges and losses. A heartwarming story about cherishing everyday moments with the people we love.",
         date:2013,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/AboutTime.webp",
+        imageCarousel:"/fotosinitDB/AboutTime.webp",
         imagePoster:"",
         trailer:"https://www.youtube.com/watch?v=7OIFdWk83no&t=8s"
         
@@ -112,7 +112,7 @@ async function initMovies(){
         director: 'Ron Howard',
         synopsis:"A murder at the Louvre Museum leads a symbologist and a cryptologist to uncover a conspiracy involving secret societies, religious history, and hidden messages in famous artworks. Their investigation reveals shocking truths that could shake the foundations of Christianity.",
         date:2006,
-        imageCarousel:"/fotos/peliculas/Varias por decidir/DaV‌inciCode.webp",
+        imageCarousel:"/fotosinitDB/DaV‌inciCode.webp",
         imagePoster:"",
         trailer:"https://www.youtube.com/watch?v=lfqHb6INj3w"
     }
