@@ -49,7 +49,7 @@ export function handleEditRedirect(listContainer) {
   listContainer.addEventListener("click", async (e) => {
     if (e.target.classList.contains("edit-btn")) {
       const listId = e.target.dataset.listId;
-      window.location.href = `/docs/edit-list.html?id=${listId}`;
+      window.location.href = `/edit-list.html?id=${listId}`;
     }
   });
 }

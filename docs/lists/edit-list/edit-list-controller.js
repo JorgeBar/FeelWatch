@@ -28,7 +28,7 @@ export async function editListController(editedListForm){
 
             await editList(listId,name,description,tagsArray)
 
-            window.location.href = '/docs/listas_template.html'
+            window.location.href = '/listas_template.html'
 
 
             
