@@ -12,7 +12,7 @@ export function signupController(form){
         const paswordConfirmElement = form.querySelector("#password-confirm")
 
         const username = userNameElement.value; 
-        const useremail = userEmailElement.value;
+        const email = userEmailElement.value;
         const password = passwordElement.value;
         const passwordConfirmed= paswordConfirmElement.value
 
@@ -20,7 +20,7 @@ export function signupController(form){
 
         //validarlos
         const emailRegExp = new RegExp(REGEXP.mail);
-        if (!emailRegExp.test(useremail)){
+        if (!emailRegExp.test(email)){
             errors.push('Formato de mail incorrecto')
         };
         if(!username){
@@ -35,16 +35,16 @@ export function signupController(form){
         }
         if(errors.length === 0){
         console.log('Llamando a handleCreateUser')  // AÑADE ESTO
-         handleCreateUser(username,useremail,password)            
+         handleCreateUser(username,email,password)            
 
         }
     })
 
 }
 
-    async function handleCreateUser(username,useremail,password){
+    async function handleCreateUser(username,email,password){
         try {
-        await createUser(username,useremail,password)
+        await createUser(username,email,password)
         window.location.href = "/login.html"
 
         } catch (error) {
