@@ -9,7 +9,7 @@ import path from 'node:path';
 import connectMonggose from './lib/connectMongoose.js';
 import { connectRabbit } from './lib/publisher.js'
 import * as authController from './controllers/auth/authController.js'
-//import { startConsumer } from './lib/consumer.js'
+import { startConsumer } from './lib/consumer.js'
 import * as profileController from './controllers/userProfileController.js'
 import * as MovieController from './controllers/MovieController.js'
 import * as ListController from './controllers/ListController.js'
@@ -22,7 +22,7 @@ import * as swaggerUI from './lib/swaggerMiddleware.js'
 
 await connectMonggose()
 await connectRabbit()
-//await startConsumer()
+await startConsumer()
 console.log('Conectado a MongoDB')
 
 const app = express()
@@ -81,7 +81,6 @@ app.delete('/profile/:id', jwtAuth.guard, profileController.DeleteAccount)
 
 
 app.get('/lists/:id/movies/create' ,jwtAuth.guard, MovieController.getCreateMovie)
-console.log('Registrando ruta POST /lists/:id/movies')
 
 app.post('/lists/:id/movies' ,jwtAuth.guard,upload.fields([ 
     { name: "carousel", maxCount: 1 },

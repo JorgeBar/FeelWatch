@@ -58,9 +58,29 @@ export function getRegister(req, res, next) {
 
 export async function postRegister(req, res, next) {
   try {
-    await body("username").isLength({ min: 5 }).run(req);
-    await body("email").isEmail().run(req);
-    await body("password").isLength({ min: 6 }).run(req);
+    await body("username")  .notEmpty()
+    .withMessage("El username es obligatorio")
+    .trim()
+    .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/)
+    .withMessage()
+    .isLength({ min: 3, max: 15 })
+    .withMessage("Debe tener como mínimo 3 caracteres y máximo 15")
+    .run(req);
+    await body("email")
+    .notEmpty()
+    .isEmail().run(req)
+    .withMessage("Must be a valid email format")
+    
+    await body("password")
+    .notEmpty()
+    .withMessage("Must put a password")
+    .isLength({ min: 8 })
+    .withMessage("Password must contains altleast 8 characteres")
+    .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[=@#$])/)
+    .withMessage(
+        "Debe tener al menos: 8 caracetres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
+      )
+    .run(req);
     //hay que poner más validaciones
 
     const errors = validationResult(req);
