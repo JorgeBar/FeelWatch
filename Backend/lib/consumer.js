@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import amqplib from "amqplib";
-import { sendEmail } from "./emailManager.js";
+//import { sendEmail } from "./emailManager.js";
+import { sendEmail } from './emailManagerSendGrid.js';
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
@@ -39,7 +40,7 @@ export async function startConsumer() {
       channel.ack(message);
     } catch (error) {
       console.error('Error:', error);
-      channel.nack(message);
+      channel.nack(message, false, false);
     }
   });
 }
