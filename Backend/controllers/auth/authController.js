@@ -58,18 +58,21 @@ export function getRegister(req, res, next) {
 
 export async function postRegister(req, res, next) {
   try {
-    await body("username")  .notEmpty()
+    await body("username")  
+    .notEmpty()
     .withMessage("El username es obligatorio")
     .trim()
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/)
-    .withMessage()
+    .withMessage("Must contain a Cap and a Special character")
     .isLength({ min: 3, max: 15 })
     .withMessage("Debe tener como mínimo 3 caracteres y máximo 15")
     .run(req);
     await body("email")
     .notEmpty()
-    .isEmail().run(req)
+    .isEmail()
     .withMessage("Must be a valid email format")
+    .run(req);
+    
     
     await body("password")
     .notEmpty()
