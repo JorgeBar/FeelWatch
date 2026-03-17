@@ -19,11 +19,12 @@ import * as jwtAuth from './lib/jwtAuthMiddleware.js'
 import * as swaggerUI from './lib/swaggerMiddleware.js'
 
 
-
 await connectMonggose()
 await connectRabbit()
 await startConsumer()
+
 console.log('Conectado a MongoDB')
+console.log('Conectado a RabbitMQ')
 
 const app = express()
 const __dirname = import.meta.dirname;
