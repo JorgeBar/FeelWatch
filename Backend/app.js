@@ -16,7 +16,7 @@ import * as ListController from './controllers/ListController.js'
 import * as langController from './controllers/langController.js'
 import upload from './lib/uploadConfigure.js'
 import * as jwtAuth from './lib/jwtAuthMiddleware.js'
-import * as swaggerUI from './lib/swaggerMiddleware.js'
+//import * as swaggerUI from './lib/swaggerMiddleware.js'
 
 
 await connectMonggose()
