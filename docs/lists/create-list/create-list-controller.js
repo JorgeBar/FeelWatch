@@ -3,10 +3,8 @@ import { createList } from "./create-list-model.js";
 import { buildCreatedList } from "./create-list-view.js";
 
 export  function createListController(createListForm ,createdList, creatingMovies){
-        console.log('Controller cargado')
 
     createListForm.addEventListener("submit", async (event)=> {
-                console.log('Submit capturado')
 
         event.preventDefault();
         const nameElement = createListForm.querySelector("#title-list")
@@ -22,7 +20,6 @@ export  function createListController(createListForm ,createdList, creatingMovie
         const lists = await createList(name,description,tagsArray)
         const listId = lists._id
 
-        console.log('Array de películas:', creatingMovies) 
         
 
 
