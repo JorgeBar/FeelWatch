@@ -102,6 +102,37 @@ h2{
     }
 }
 
+.loading {
+    background-color: var(--gray);
+    background-image: linear-gradient(
+        to right, 
+        transparent, 
+        #55555565, 
+        transparent
+    );
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    animation: loading 1.6s linear infinite;
+    color: transparent !important;
+    border: none;
+}
+h2.loading:empty, h3.loading:empty{
+    width: 40%;
+    height: 1.5rem;
+    margin-bottom: 1rem;
+    display: block;
+    border-radius: 4px;
+}
+
+@keyframes loading {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
 @media (max-width: 500px ) {
     .card{
         flex: 0 0 100%;

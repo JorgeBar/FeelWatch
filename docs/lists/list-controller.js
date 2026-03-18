@@ -1,5 +1,5 @@
 import { getLists } from "./lists-model.js";
-import { buildEmptyList,buildCarousel } from "./lists-view.js";
+import { buildEmptyList,buildCarousel,buildSkelletonCarousel } from "./lists-view.js";
 import { getUserIdFromToken } from "../utils/jwt-decode.js";
 
 
@@ -32,17 +32,21 @@ function spinnerEvent(element) {
 export async function listsController(listContainer) {
   //getList
   listContainer.innerHTML = "";
-  spinnerEvent(listContainer);
+  //spinnerEvent(listContainer);
 
   try {
+    const skelleton = buildSkelletonCarousel()
+    listContainer.appendChild(skelleton)
     const lists = await getLists();
+    listContainer.innerHTML= "";
     fireEvent("Listas cargadas correctamente", "success", listContainer);
     drawLists(lists, listContainer);
   } catch (error) {
+    listContainer.innerHTML= "";
     fireEvent(error.message, "error", listContainer);
-  } finally {
-    spinnerEvent(listContainer);
-  }
+  } //finally {
+    //spinnerEvent(listContainer);
+  //}
 }
 
 export function handleEditRedirect(listContainer) {

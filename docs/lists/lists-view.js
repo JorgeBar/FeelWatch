@@ -76,6 +76,25 @@ carousel.classList.add(`carousel-${index}`)
   return fragment
 }
 
+export function buildSkelletonCarousel(){
+  const fragment = document.createDocumentFragment()
+  const titlelist = document.createElement("h2");
+  const carousel = document.createElement("div")
+  carousel.classList.add('carousel')
+  titlelist.classList.add('loading')
+
+  for (let i = 0; i<5; i++){
+    const card = document.createElement("div")
+    card.classList.add('card')
+    card.classList.add('loading')     
+    carousel.appendChild(card)
+  }
+
+  fragment.appendChild(titlelist)
+  fragment.appendChild(carousel)
+  
+  return fragment
+}
 
 
 export function buildEmptyList() {
