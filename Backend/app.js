@@ -52,7 +52,9 @@ app.use((req, res, next) => {
 });
 //app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specification))
 
-
+app.get('/health', (req,res) =>{
+    res.status(200).send('Wake up Neo')
+})
 app.get('/change-locale/:locale', langController.changeLocale)
 
 //Public pages
