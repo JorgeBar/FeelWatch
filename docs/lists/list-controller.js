@@ -31,18 +31,16 @@ function spinnerEvent(element) {
 }
 export async function listsController(listContainer) {
   //getList
-  listContainer.innerHTML = "";
   //spinnerEvent(listContainer);
 
   try {
     const lists = await getLists();
-    setTimeout(()=>{
+    const dummy = document.createElement('div');
 
-      listContainer.innerHTML= "";
-      fireEvent("Listas cargadas correctamente", "success", listContainer);
-      drawLists(lists, listContainer);
+    drawLists(lists, dummy);
 
-    },1000)
+    listContainer.replaceChildren(...dummy.childNodes);
+    fireEvent("Listas cargadas correctamente", "success", listContainer);
   } catch (error) {
     fireEvent(error.message, "error", listContainer);
   } //finally {
