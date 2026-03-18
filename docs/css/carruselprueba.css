@@ -117,11 +117,13 @@ h2{
     border: none;
 }
 h2.loading {
+    text-align: left;
     min-height: 2rem;       
     width: 40%;            
     background-color: var(--gray); 
-    margin: 0 auto 2rem auto; 
+    margin: 2rem auto;
     border-radius: 4px;
+    display: block;
 }
 
 .card.loading {
@@ -131,7 +133,8 @@ h2.loading {
     background-color: var(--gray); 
     border-radius: 0.3rem;
     margin: 0 0.5rem;      
-    display: block;         
+    display: block;
+    gap:1rem;         
 }
 
 @keyframes loading {
