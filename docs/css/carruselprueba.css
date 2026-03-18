@@ -116,12 +116,22 @@ h2{
     color: transparent !important;
     border: none;
 }
-h2.loading:empty, h3.loading:empty{
-    width: 40%;
-    height: 1.5rem;
-    margin-bottom: 1rem;
-    display: block;
+h2.loading {
+    min-height: 2rem;       
+    width: 40%;            
+    background-color: var(--gray); 
+    margin: 0 auto 2rem auto; 
     border-radius: 4px;
+}
+
+.card.loading {
+    
+    flex: 0 0 12.3rem;      
+    aspect-ratio: 2 / 3;    
+    background-color: var(--gray); 
+    border-radius: 0.3rem;
+    margin: 0 0.5rem;      
+    display: block;         
 }
 
 @keyframes loading {
