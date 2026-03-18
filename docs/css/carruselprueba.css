@@ -136,6 +136,20 @@ h2.loading {
     display: block;
     gap:1rem;         
 }
+.carousel.loading::scroll-button(right), 
+.carousel.loading::scroll-button(left),
+.carousel.loading::-webkit-scrollbar,
+.carousel.loading::scroll-marker-group {
+    display: none !important;
+}
+
+/* Forzamos que el contenedor no intente hacer scroll */
+.carousel.loading {
+    overflow: hidden !important;
+    display: flex;
+    gap: 1rem;
+    justify-content: center; /* Opcional: centra las cards grises */
+}
 
 @keyframes loading {
     0% {

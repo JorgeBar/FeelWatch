@@ -42,7 +42,7 @@ export async function listsController(listContainer) {
       fireEvent("Listas cargadas correctamente", "success", listContainer);
       drawLists(lists, listContainer);
 
-    },500)
+    },1000)
   } catch (error) {
     fireEvent(error.message, "error", listContainer);
   } //finally {
