@@ -36,9 +36,13 @@ export async function listsController(listContainer) {
 
   try {
     const lists = await getLists();
-    listContainer.innerHTML= "";
-    fireEvent("Listas cargadas correctamente", "success", listContainer);
-    drawLists(lists, listContainer);
+    setTimeout(()=>{
+
+      listContainer.innerHTML= "";
+      fireEvent("Listas cargadas correctamente", "success", listContainer);
+      drawLists(lists, listContainer);
+
+    },500)
   } catch (error) {
     fireEvent(error.message, "error", listContainer);
   } //finally {
