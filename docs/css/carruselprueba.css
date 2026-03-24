@@ -202,7 +202,7 @@ h2.loading {
     font-size: 16px;
   }  
   .carousel {
-    --cards-visible: 3;
+    --cards-visible: 5;
     width: 60%;
   }
   .card {
