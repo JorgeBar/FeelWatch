@@ -1,17 +1,26 @@
 import List from "../models/list.js";
 import Movie from "../models/movie.js";
 import { normalizeTag } from "../lib/normalizeTag.js";
+import User from "../models/User.js";
 
 export async function getLists(req, res) {
   try {
     let query = {};
 
     if (req.query.owner === "me") {
-      if (!req.session.userId) {
+      if (!req.apiUserId) {
         return res.status(401).json({ error: "No autorizado" });
       }
       query.owner = req.apiUserId;
     }
+
+    //Filtro por user InitDB
+    if (req.queryowner === "demo"){
+        const userTesters = await User.find({username: {$in: ["TesterOne", "TesterTwo"]}})
+        const testerIds = userTesters.map(user => user._id)
+        query.owner = {$in: testerIds}
+      }
+    
     // Filtro por tag
     if (req.query.tags) {
       query.tags = normalizeTag(req.query.tags);
