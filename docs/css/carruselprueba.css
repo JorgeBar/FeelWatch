@@ -134,13 +134,15 @@ h2.loading {
     border-radius: 0.3rem;
     margin: 0 0.5rem;      
     display: block;
-    gap:1rem;         
+         
 }
 .carousel.loading::scroll-button(right), 
-.carousel.loading::scroll-button(left),
-.carousel.loading::-webkit-scrollbar,
-.carousel.loading::scroll-marker-group {
-    display: none !important;
+.carousel.loading::scroll-button(left){
+    display: none ;
+}
+
+.card.loading::scroll-marker{
+    background-color: var(--gray);
 }
 
 /* Forzamos que el contenedor no intente hacer scroll */
@@ -148,7 +150,7 @@ h2.loading {
     overflow: hidden !important;
     display: flex;
     gap: 1rem;
-    justify-content: center; /* Opcional: centra las cards grises */
+    /*justify-content: center; /* Opcional: centra las cards grises */
 }
 
 @keyframes loading {

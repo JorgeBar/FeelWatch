@@ -3,6 +3,9 @@
     flex-direction: column;
     align-items: center;
 }
+#lists-loading {
+    width: 100%;
+}
 .side-images{
     display: none;
 }
@@ -21,7 +24,7 @@
   h3{
     text-align: center;
   }
-  .list{
+  .list-index{
     list-style: none;
     margin: 0;
     padding: 0;
@@ -32,7 +35,7 @@
     figure{
         margin: 0;
         img{
-            transition: width 0.6s ease-in-out;
+           transition: width 0.6s ease-in-out;
 
         }
     }
@@ -43,7 +46,8 @@
 }
 
 @media screen and (hover: hover) {
-  img{
+  .list-movies
+  { img{
     cursor: pointer;
     &:hover {
       width: 130px;
@@ -51,6 +55,13 @@
       z-index: 10;
       position: relative;
     }
+
+  }
+  }
+}
+@media screen and (width> 768px) {
+  .bottom-part{
+    background-image: url("../../fotos/LlorandoDeFelicidad1.jpeg");
   }
 }
 
@@ -67,13 +78,18 @@
     flex-direction: row; 
     justify-content: center;
     align-items: center;
+    background-image: none;
   }
 
   .side-images {
+    
+    mask-image: radial-gradient(ellipse at center, black 60%, transparent 100%);
     display: block;
-    flex: 0 0 450px; 
+    flex: 0 0 350px; 
     opacity: 0.4;
-    align-items: center;
+     .img-desktop{
+      display:none ;
+    }
   }
 
   .side-images img {
@@ -81,6 +97,8 @@
     height: auto;
     margin-bottom: 2rem;
     cursor: default;
+   
+   
   }
 
 
@@ -88,7 +106,15 @@
 @media screen and (width > 1440px) {
   
   .side-images {
-    img.hide {
+
+   mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+
+    flex: 0 0 450px;
+
+    .img-desktop{
+      display: block;
+    }
+    .img-laptop-size{
       display: none;
     }
   }

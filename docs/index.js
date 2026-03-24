@@ -1,13 +1,13 @@
 import { listsController } from "./lists/list-controller.js"
 import { notificationController } from "./notification/notification-controller.js"
 import { sessionController } from "./session/session-controller.js"
-import {spinnerController} from "./spinner/spinner-controller.js"
+import {getDemoLists} from "./lists/lists-model.js"
+
 
 document.addEventListener("DOMContentLoaded", () => {
 
    const listContainer = document.querySelector("#lists-loading")
    const notificationContainer = document.querySelector("#notification-test")
-   const sipnnerContainer = document.querySelector('.spinner')
    const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
    
    if (notificationContainer && listContainer) {
@@ -17,16 +17,9 @@ document.addEventListener("DOMContentLoaded", () => {
          showNotification(event.detail.message, event.detail.type)
       })
    }
-   
-   if (sipnnerContainer && listContainer) {
-      const {showSpinner} = spinnerController(sipnnerContainer)
-      
-      listContainer.addEventListener("loading-spinner", () =>{
-         showSpinner()
-      })
+   if(listContainer){
+      listsController(listContainer,getDemoLists)
    }
-   
- 
-   
+
    sessionController(sessionContainers)
 })

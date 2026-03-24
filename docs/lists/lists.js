@@ -1,4 +1,5 @@
 import {handleEditRedirect, listsController } from "../lists/list-controller.js"
+import { getLists } from "./lists-model.js"
 import {notificationController } from "../notification/notification-controller.js"
 import {sessionController } from "../session/session-controller.js"
 import {spinnerController} from "../spinner/spinner-controller.js"
@@ -28,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
    }
    
    if (listContainer) {
-      listsController(listContainer)
+      listsController(listContainer,getLists)
       deleteListController(listContainer)
       handleEditRedirect(listContainer)
    }

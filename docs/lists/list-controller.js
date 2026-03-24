@@ -1,4 +1,3 @@
-import { getLists } from "./lists-model.js";
 import { buildEmptyList,buildCarousel } from "./lists-view.js";
 import { getUserIdFromToken } from "../utils/jwt-decode.js";
 
@@ -29,12 +28,12 @@ function spinnerEvent(element) {
   const customEvent = new CustomEvent("loading-spinner", {});
   element.dispatchEvent(customEvent);
 }
-export async function listsController(listContainer) {
+export async function listsController(listContainer, fetchFunction) {
   //getList
   //spinnerEvent(listContainer);
 
   try {
-    const lists = await getLists();
+    const lists = await fetchFunction();
     const dummy = document.createElement('div');
 
     drawLists(lists, dummy);
@@ -47,6 +46,8 @@ export async function listsController(listContainer) {
     //spinnerEvent(listContainer);
   //}
 }
+
+
 
 export function handleEditRedirect(listContainer) {
   listContainer.addEventListener("click", async (e) => {
