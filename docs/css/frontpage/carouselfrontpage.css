@@ -130,7 +130,11 @@ h2.loading {
 }
 
 .card.loading {
-  flex: 0 0 12.3rem;
+   flex: 0 0
+    calc(
+      (100cqi - (var(--cards-visible) - 1) * var(--cards-gap)) /
+        var(--cards-visible)
+    );
   aspect-ratio: 2 / 3;
   background-color: var(--gray);
   border-radius: 0.3rem;

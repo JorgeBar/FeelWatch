@@ -13,7 +13,11 @@ h2{
     
 }
 .carousel {
-    width: 70%;
+ --cards-visible: 2;
+  --cards-gap: 0.75rem;
+  container-type: inline-size;
+  gap: var(--cards-gap);
+  width: 95%;
     overflow-x: auto;
     margin: 2rem auto ;
     display: flex;
@@ -70,7 +74,11 @@ h2{
 }
 .card{
     scroll-snap-align: start;
-    flex: 0 0 12.3rem;
+     flex: 0 0
+    calc(
+      (100cqi - (var(--cards-visible) - 1) * var(--cards-gap)) /
+        var(--cards-visible)
+    );
     aspect-ratio: 2 / 3;
     border-radius: 0.3rem;
     overflow: hidden;
@@ -128,7 +136,11 @@ h2.loading {
 
 .card.loading {
     
-    flex: 0 0 12.3rem;      
+     flex: 0 0
+    calc(
+      (100cqi - (var(--cards-visible) - 1) * var(--cards-gap)) /
+        var(--cards-visible)
+    );     
     aspect-ratio: 2 / 3;    
     background-color: var(--gray); 
     border-radius: 0.3rem;
@@ -166,4 +178,42 @@ h2.loading {
     .card{
         flex: 0 0 100%;
     }
+}
+
+@media screen and (width > 425px) {
+  .carousel {
+    --cards-visible: 3;
+    width: 90%;
+  }
+  .card {
+  }
+}
+@media screen and (width > 768px) {
+  .carousel {
+    --cards-visible: 4;
+    width: 80%;
+  }
+  .card {
+  }
+}
+@media screen and (width > 1024px) {
+
+  h2{
+    font-size: 16px;
+  }  
+  .carousel {
+    --cards-visible: 3;
+    width: 60%;
+  }
+  .card {
+  }
+}
+@media screen and (width > 1440px) {
+    h2{
+        font-size: 28px;
+    }
+  .carousel {
+  }
+  .card {
+  }
 }

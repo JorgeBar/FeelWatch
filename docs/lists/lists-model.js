@@ -1,6 +1,13 @@
-export async function getLists() {
+export async function getLists(
+  sort,
+  tags,
+  search,
+  skip,
+  limit
+
+) {
   try {
-    const response = await fetch("https://feelwatch.onrender.com/lists/");
+  const response = await fetch(`https://feelwatch.onrender.com/lists/?sort=${sort}&tags=${tags}&search=${search}&skip=${skip}&limit=${limit}`);
     if (!response.ok) {
       throw new Error("Recurso no existente");
     }
