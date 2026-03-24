@@ -1,183 +1,175 @@
-
-body{
-    margin: 0;
-    background-color: black;
-    padding: 0;
-    color: white;
-    font-family: var(--main-font-family);
+body {
+  margin: 0;
+  background-color: black;
+  padding: 0;
+  color: white;
+  font-family: var(--main-font-family);
 }
-h2{
-    
-    width: 70%;
-    margin: 0 auto 1rem auto ;
-    
+h2 {
+  width: 70%;
+  margin: 0 auto 1rem auto;
 }
 .carousel {
- --cards-visible: 2;
+  --cards-visible: 2;
   --cards-gap: 0.75rem;
   container-type: inline-size;
   gap: var(--cards-gap);
   width: 95%;
-    overflow-x: auto;
-    margin: 2rem auto ;
-    display: flex;
-  
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scroll-marker-group: after;
+  overflow-x: auto;
+  margin: 2rem auto;
+  display: flex;
+
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-marker-group: after;
 }
 /*Probablemente acabaré quitando el scroll marker group, no le veo mucho sentido de momento*/
 
-
-
-.carousel::scroll-marker-group{
-    display: flex;
-    justify-content: center;
-    gap: 0.3rem;
-    margin-bottom: 2.5rem;
+.carousel::scroll-marker-group {
+  display: flex;
+  justify-content: center;
+  gap: 0.3rem;
+  margin-bottom: 2.5rem;
 }
-.card::scroll-marker{
-    content: '';
-    height: 1em;
-    width: 1em;
-    background-color:var(--green-Matrix);
-    border-radius: 50%;
+.card::scroll-marker {
+  content: "";
+  height: 1em;
+  width: 1em;
+  background-color: var(--green-Matrix);
+  border-radius: 50%;
 }
-.card::scroll-marker:target-current{
- background-color:  var(--alternative-color);
+.card::scroll-marker:target-current {
+  background-color: var(--alternative-color);
 }
-.carousel::-webkit-scrollbar{
-    display: none;
+.carousel::-webkit-scrollbar {
+  display: none;
 }
-.carousel::scroll-button(right), .carousel::scroll-button(left) {
-    content: '→';
-    border:none;
-    background-color: var(--green-Matrix);
-    font-size: 1rem;
-    color: white;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    padding-bottom: .1em;
-    cursor: pointer;
-   
+.carousel::scroll-button(right),
+.carousel::scroll-button(left) {
+  content: "→";
+  border: none;
+  background-color: var(--green-Matrix);
+  font-size: 1rem;
+  color: white;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  padding-bottom: 0.1em;
+  cursor: pointer;
 }
 
-.carousel::scroll-button(left){
-    content: '←';
-   
-   
+.carousel::scroll-button(left) {
+  content: "←";
 }
-.carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled{
-    opacity: 0.5;
-    cursor: auto;
+.carousel::scroll-button(right):disabled,
+.carousel::scroll-button(left):disabled {
+  opacity: 0.5;
+  cursor: auto;
 }
-.card{
-    scroll-snap-align: start;
-     flex: 0 0
+.card {
+  scroll-snap-align: start;
+  flex: 0 0
     calc(
       (100cqi - (var(--cards-visible) - 1) * var(--cards-gap)) /
         var(--cards-visible)
     );
-    aspect-ratio: 2 / 3;
-    border-radius: 0.3rem;
-    overflow: hidden;
-    padding: 0;
-    position: relative;
-    transition: transform 0.3s ease;
-    text-align: center;
-    align-content: center;
-    img{
-        width: 90%;
-        object-fit: cover;
-        transition: filter 0.3s ease, transform 0.3s ease;
-        
-    }
+  aspect-ratio: 2 / 3;
+  border-radius: 0.3rem;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  transition: transform 0.3s ease;
+  text-align: center;
+  align-content: center;
+  img {
+    width: 90%;
+    object-fit: cover;
+    transition:
+      filter 0.3s ease,
+      transform 0.3s ease;
+  }
 }
-@media screen and (hover: hover){
-    .card{
-        cursor: pointer;
-        &:hover { 
-             transform: scale(1.05);
-            z-index: 10;
-        }
-        
+@media screen and (hover: hover) {
+  .card {
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.05);
+      z-index: 10;
     }
-    .card:hover img{
-        filter: brightness(1.2); /* Ilumina la imagen */
-        /* O un borde: */
-        box-shadow:  0 0 0 3px rgba(255, 255, 255, 0.8);
-    }
+  }
+  .card:hover img {
+    filter: brightness(1.2); /* Ilumina la imagen */
+    /* O un borde: */
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.8);
+  }
 }
 
 .loading {
-    background-color: var(--gray);
-    background-image: linear-gradient(
-        to right, 
-        transparent, 
-        #55555565, 
-        transparent
-    );
-    background-size: 200% 100%;
-    background-repeat: no-repeat;
-    animation: loading 1.6s linear infinite;
-    color: transparent !important;
-    border: none;
+  background-color: var(--gray);
+  background-image: linear-gradient(
+    to right,
+    transparent,
+    #55555565,
+    transparent
+  );
+  background-size: 200% 100%;
+  background-repeat: no-repeat;
+  animation: loading 1.6s linear infinite;
+  color: transparent !important;
+  border: none;
 }
 h2.loading {
-    text-align: left;
-    min-height: 2rem;       
-    width: 40%;            
-    background-color: var(--gray); 
-    margin: 2rem auto;
-    border-radius: 4px;
-    display: block;
+  text-align: left;
+  min-height: 2rem;
+  width: 40%;
+  background-color: var(--gray);
+  margin: 2rem auto;
+  border-radius: 4px;
+  display: block;
 }
 
 .card.loading {
-    
-     flex: 0 0
+  flex: 0 0
     calc(
       (100cqi - (var(--cards-visible) - 1) * var(--cards-gap)) /
         var(--cards-visible)
-    );     
-    aspect-ratio: 2 / 3;    
-    background-color: var(--gray); 
-    border-radius: 0.3rem;
-    margin: 0 0.5rem;      
-    display: block;
-         
+    );
+  aspect-ratio: 2 / 3;
+  background-color: var(--gray);
+  border-radius: 0.3rem;
+  margin: 0 0.5rem;
+  display: block;
 }
-.carousel.loading::scroll-button(right), 
-.carousel.loading::scroll-button(left){
-    display: none ;
+.carousel.loading::scroll-button(right),
+.carousel.loading::scroll-button(left) {
+  display: none;
 }
 
-.card.loading::scroll-marker{
-    background-color: var(--gray);
+.card.loading::scroll-marker {
+  background-color: var(--gray);
 }
 
 /* Forzamos que el contenedor no intente hacer scroll */
 .carousel.loading {
-    overflow: hidden !important;
-    display: flex;
-    gap: 1rem;
-    /*justify-content: center; /* Opcional: centra las cards grises */
+  overflow: hidden !important;
+  display: flex;
+  gap: 1rem;
+  /*justify-content: center; /* Opcional: centra las cards grises */
 }
 
 @keyframes loading {
-    0% {
-        background-position: -200% 0;
-    }
-    100% {
-        background-position: 200% 0;
-    }
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
-@media (max-width: 500px ) {
-    .card{
-        flex: 0 0 100%;
-    }
+@media (max-width: 500px) {
+  .card {
+    flex: 0 0 100%;
+  }
 }
 
 @media screen and (width > 425px) {
@@ -197,10 +189,9 @@ h2.loading {
   }
 }
 @media screen and (width > 1024px) {
-
-  h2{
+  h2 {
     font-size: 16px;
-  }  
+  }
   .carousel {
     --cards-visible: 5;
     width: 60%;
@@ -209,9 +200,9 @@ h2.loading {
   }
 }
 @media screen and (width > 1440px) {
-    h2{
-        font-size: 28px;
-    }
+  h2 {
+    font-size: 28px;
+  }
   .carousel {
   }
   .card {

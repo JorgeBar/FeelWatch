@@ -86,6 +86,12 @@ export function buildEmptyList() {
 }
 
 
+export function buildSort(sort){
+  const sortElement = document.createElement('div')
+
+  return sortElement;
+}
+
 
 export const buildImage = (photo) => {
   const newImage = document.createElement("img");
