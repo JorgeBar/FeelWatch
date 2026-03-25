@@ -86,7 +86,7 @@ export function buildEmptyList() {
 }
 
 
-export function buildSort(sort){
+export function filters(sort){
   const sortElement = document.createElement('div')
 
   return sortElement;

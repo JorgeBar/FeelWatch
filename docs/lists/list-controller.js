@@ -28,12 +28,12 @@ function spinnerEvent(element) {
   const customEvent = new CustomEvent("loading-spinner", {});
   element.dispatchEvent(customEvent);
 }
-export async function listsController(listContainer, fetchFunction) {
+export async function listsController(listContainer, fetchFunction, sort = "name-asc", search="", skip=0,limit=10) {
   //getList
   //spinnerEvent(listContainer);
 
   try {
-    const lists = await fetchFunction();
+    const lists = await fetchFunction(sort,search,"",skip,limit);
     const dummy = document.createElement('div');
 
     drawLists(lists, dummy);

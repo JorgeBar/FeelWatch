@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
    const notificationContainer = document.querySelector("#notification-test")
    const sipnnerContainer = document.querySelector('.spinner')
    const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
+   const filterContainer = document.querySelector('.filters')
    
    if (notificationContainer && listContainer) {
       const {showNotification} = notificationController(notificationContainer)
@@ -32,6 +33,17 @@ document.addEventListener("DOMContentLoaded", () => {
       listsController(listContainer,getLists)
       deleteListController(listContainer)
       handleEditRedirect(listContainer)
+   }
+   if (filterContainer){
+      const searchElement = document.querySelector('#searching')
+      const selectElement = document.querySelector('.selector')
+      filterContainer.addEventListener("click",()=>{
+          listsController(searchElement.value)
+      })
+      filterContainer.addEventListener("change",() =>{
+         listsController(listContainer,getLists,selectElement.value)
+      })
+   
    }
    
    sessionController(sessionContainers)
