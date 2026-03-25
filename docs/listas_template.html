@@ -1,88 +1,107 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/common.css" />
-    <link rel="stylesheet" href="css/carruselprueba.css">
+    <link rel="stylesheet" href="css/carruselprueba.css" />
     <link rel="stylesheet" href="css/header.css" />
     <link rel="stylesheet" href="css//footer.css" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/fotos/favicon/favicon-32x32.png">
-    <link rel="apple-touch-icon" sizes="180x180"  href="/fotos/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="/fotos/favicon/android-chrome-192x192.png">
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/fotos/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/fotos/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="/fotos/favicon/android-chrome-192x192.png"
+    />
 
-    <meta name="title" content="FeelWatch - Lists">
-    <meta name="description" content="Does the genre on the platforms not fit your mood? Find what fits your feelings here or, even better, create it!">
+    <meta name="title" content="FeelWatch - Lists" />
+    <meta
+      name="description"
+      content="Does the genre on the platforms not fit your mood? Find what fits your feelings here or, even better, create it!"
+    />
 
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://feelwatch.netlify.app/">
-    <meta property="og:title" content="FeelWatch - Lists">
-    <meta property="og:image" content="https://raw.githubusercontent.com/JorgeBar/FeelWatch/main/docs/fotos/mood2Agrandada1200x600.jpg">
-    <meta property="og:description" content="Does the genre on the platforms not fit your mood? Find what fits your feelings here or, even better, create it!">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://feelwatch.netlify.app/" />
+    <meta property="og:title" content="FeelWatch - Lists" />
+    <meta
+      property="og:image"
+      content="https://raw.githubusercontent.com/JorgeBar/FeelWatch/main/docs/fotos/mood2Agrandada1200x600.jpg"
+    />
+    <meta
+      property="og:description"
+      content="Does the genre on the platforms not fit your mood? Find what fits your feelings here or, even better, create it!"
+    />
 
-
-    <title>
-        Lists
-    </title>
-</head>
-<body>
-        <header class="header">
-      <h1 class="logoName"><a  href="index.html">FeelWatch</a></h1>
+    <title>Lists</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1 class="logoName"><a href="index.html">FeelWatch</a></h1>
       <nav class="navbar">
-         <input type="checkbox" id="menu-toggle" />
+        <input type="checkbox" id="menu-toggle" />
         <label for="menu-toggle" class="menu-icon">
           <div class="line"></div>
           <div class="line"></div>
           <div class="line"></div>
-         </label>
+        </label>
 
-         <ul class="list-navbar session-nav">
-        </ul>
+        <ul class="list-navbar session-nav"></ul>
       </nav>
     </header>
     <main>
       <form class="filters">
         <label for="searching">Search</label>
-        <input id="searching" name="search" type="search">
+        <input id="searching" name="search" type="search" />
         <label>Order by</label>
         <select class="selector">
-            <option value="name-asc">Name Asc</option>
-            <option value="name-desc">Name Desc</option>
-
+          <option value="name-asc">Name Asc</option>
+          <option value="name-desc">Name Desc</option>
         </select>
       </form>
- 
-        </main>
-         <section id="lists-loading">
-          <h2 class="loading"></h2>
-            <div class="carousel loading">
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-            </div>
+    </main>
+    <section id="lists-loading">
+      <h2 class="loading"></h2>
+      <div class="carousel loading">
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+      </div>
 
-            <h2 class="loading"></h2>
-            <div class="carousel loading">
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-              <div class="card loading"></div>
-            </div>
-         </section>
+      <h2 class="loading"></h2>
+      <div class="carousel loading">
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+        <div class="card loading"></div>
+      </div>
+    </section>
+    <nav class="pagination">
+      <button id="prev-btn">Before</button>
+      <span id="page-info"></span>
+      <button id="next-btn">Next</button>
+    </nav>
+  </body>
 
-        </body>
-        
-        <footer class="footer">
-      <p>Copyright 2025 FeelWatch</p>
-    </footer>
-    <script type="module" src="./lists/lists.js"></script>
-
-
-        </html>
+  <footer class="footer">
+    <p>Copyright 2025 FeelWatch</p>
+  </footer>
+  <script type="module" src="./lists/lists.js"></script>
+</html>

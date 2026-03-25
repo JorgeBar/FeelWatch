@@ -12,6 +12,8 @@ document.addEventListener("DOMContentLoaded", () => {
    const sipnnerContainer = document.querySelector('.spinner')
    const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
    const filterContainer = document.querySelector('.filters')
+   const paginationContainer = document.querySelector('.pagination')
+
    
    if (notificationContainer && listContainer) {
       const {showNotification} = notificationController(notificationContainer)
@@ -37,13 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
    if (filterContainer){
       const searchElement = document.querySelector('#searching')
       const selectElement = document.querySelector('.selector')
-      filterContainer.addEventListener("click",()=>{
-          listsController(searchElement.value)
+      filterContainer.addEventListener("input",()=>{
+          listsController(listContainer,getLists,selectElement.value,searchElement.value)
       })
       filterContainer.addEventListener("change",() =>{
          listsController(listContainer,getLists,selectElement.value)
       })
    
+   }
+   if (paginationContainer){
+      const beforeElement = document.querySelector('#prev-btn')
+      const nextElement = document.querySelector('#next-btn')
+      const pageElement = document.querySelector('#page-info')
+      let skip = 0;
+
+      beforeElement.addEventListener("click", ()=>{
+         if (skip!=0){
+            skip = skip -10;
+         }
+         listsController(listContainer,getLists,selectElement.value, searchElement.value,skip,10)
+      })
+       nextElement.addEventListener("click", ()=>{
+         skip = skip + 10
+         listsController(listContainer,getLists,selectElement.value, searchElement.value,skip,10)
+         
+      })
    }
    
    sessionController(sessionContainers)
