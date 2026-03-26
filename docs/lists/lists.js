@@ -41,10 +41,12 @@ document.addEventListener("DOMContentLoaded", () => {
    const searchElement = document.querySelector('#searching')
    const beforeElement = document.querySelector('#prev-btn')
    const nextElement = document.querySelector('#next-btn')
+   const pageElement = document.querySelector('#page-info')
+   const sortElement = document.querySelector('.sort-options')
+
 
    if (filterContainer){
-      const sortElement = document.querySelector('.sort-options')
-      filterContainer.addEventListener("input",()=>{
+      filterContainer.addEventListener("search",()=>{
           listsController(listContainer,getLists,currentSort,searchElement.value,skip)
       })
       filterContainer.addEventListener("click", async(e) =>{
@@ -65,18 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
    
    }
    if (paginationContainer){
-     
-      const pageElement = document.querySelector('#page-info')
-      
-
-      beforeElement.addEventListener("click", ()=>{
+      beforeElement.addEventListener("click", (e)=>{
          e.preventDefault()
          if (skip!=0){
             skip = skip -10;
          }
          listsController(listContainer,getLists,currentSort, searchElement.value,skip)
       })
-       nextElement.addEventListener("click", ()=>{
+       nextElement.addEventListener("click", (e)=>{
          e.preventDefault()
          skip = skip + 10
          listsController(listContainer,getLists,currentSort, searchElement.value,skip)
