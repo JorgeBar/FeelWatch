@@ -86,11 +86,6 @@ export function buildEmptyList() {
 }
 
 
-export function filters(sort){
-  const sortElement = document.createElement('div')
-
-  return sortElement;
-}
 
 
 export const buildImage = (photo) => {

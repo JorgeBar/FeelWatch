@@ -38,12 +38,24 @@ document.addEventListener("DOMContentLoaded", () => {
    }
    if (filterContainer){
       const searchElement = document.querySelector('#searching')
-      const selectElement = document.querySelector('.selector')
+      const sortElement = document.querySelector('.sort-options')
+      let currentSort = ""
       filterContainer.addEventListener("input",()=>{
-          listsController(listContainer,getLists,selectElement.value,searchElement.value)
+          listsController(listContainer,getLists,currentSort,searchElement.value)
       })
-      filterContainer.addEventListener("change",() =>{
-         listsController(listContainer,getLists,selectElement.value)
+      filterContainer.addEventListener("click", async(e) =>{
+         if(e.target.id.includes("name-asc")){
+           sortElement.classList.add('active')
+            currentSort = "name-asc"
+            listsController(listContainer,getLists,currentSort)
+
+         }
+
+         if(e.target.id.includes('name-desc')) {
+           sortElement.classList.add('active')
+            currentSort="name-desc"
+            listsController(listContainer,getLists,currentSort)
+         }  
       })
    
    }

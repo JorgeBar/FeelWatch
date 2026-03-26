@@ -63,13 +63,16 @@
     </header>
     <main>
       <form class="filters">
-        <label for="searching">Search</label>
-        <input id="searching" name="search" type="search" />
-        <label>Order by</label>
-        <select class="selector">
-          <option value="name-asc">Name Asc</option>
-          <option value="name-desc">Name Desc</option>
-        </select>
+        <div>
+          <label for="searching">🔎</label>
+          <input id="searching" name="search" type="search" />
+        </div>
+        <label></label>
+        <div class="sort-options">
+          <button id="name-asc">A-Z</button>
+          <button id="name-desc">Z-A</button>
+        </div>
+       
       </form>
     </main>
     <section id="lists-loading">
@@ -93,8 +96,9 @@
         <div class="card loading"></div>
       </div>
     </section>
+
     <nav class="pagination">
-      <button id="prev-btn">Before</button>
+      <button id="prev-btn">Prev</button>
       <span id="page-info"></span>
       <button id="next-btn">Next</button>
     </nav>
