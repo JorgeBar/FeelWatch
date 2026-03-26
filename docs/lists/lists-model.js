@@ -1,7 +1,7 @@
 export async function getLists(
   sort,
-  tags,
   search,
+  tags,
   skip,
   limit
 
