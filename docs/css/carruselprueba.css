@@ -9,6 +9,31 @@ h2 {
   width: 70%;
   margin: 0 auto 1rem auto;
 }
+.yoursown{
+  font-size: 15px;
+  margin-right: 8px;
+  a{
+    text-decoration:none;
+    color: var(--main-text-color);
+    
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 0;
+      height: 2px;
+      background-color: var(--green-Matrix);
+      transition: width 0.5s ease;
+    }
+     &:hover {
+      color: var(--green-Matrix);
+      &::after {
+        width: 100%;
+      }
+  }
+}
+}
 .filters{
     font-size: 12px;
     display: flex;
@@ -17,7 +42,9 @@ h2 {
     align-items: center;
     margin: 0.8rem 0.8rem;
     gap:5px;
-    label{}
+    label{
+      cursor: pointer;
+    }
     input{
         
         background-color: black;
@@ -27,11 +54,21 @@ h2 {
         border-color: white;
         border-width: 1.5px;
         padding: 10px;
+        text-align: center;
         
+    }
+    .search-container{
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 2px;
+    }
+    .lupa{
+      width: 24px;
+      height: 24px;
     }
     .sort-options{
         button{
-  
             color: var(--green-Matrix);
             background-color: black;
             border-radius: 40px;
@@ -42,7 +79,12 @@ h2 {
             padding: 8px;
             cursor: pointer;
             .active{
-                background-color: var(--secondary-brand-color);
+                background-color: var(--green-brand-color);
+            }
+            &:hover{
+              background-color:var(--green-Matrix);
+              color: white;
+              
             }
         }
     }
@@ -62,7 +104,13 @@ h2 {
         background-color: black;
         border-style: solid;
         border-color: white;
+        border-width: 1.5px;
+         &:hover{
+              background-color:var(--green-Matrix);
+              color: white;
+            }
     }
+    
 }
 .carousel {
   --cards-visible: 2;
@@ -230,6 +278,24 @@ h2.loading {
   }
   .card {
   }
+   .filters{
+    .yoursown{
+      font-size: 24px;
+    }
+    font-size: 16px;
+    justify-content: center;
+    .lupa{
+      margin-top: 4px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+  .pagination{
+    button{
+      font-size: 16px;
+    }
+  }
+
 }
 @media screen and (width > 768px) {
   .carousel {
@@ -237,6 +303,17 @@ h2.loading {
     width: 80%;
   }
   .card {
+  }
+  .filters{
+  }
+  .yoursown{}
+  .search-container{
+    margin-left: 300px;
+  }
+  .pagination{
+    button{
+      font-size: 18px;
+    }
   }
 }
 @media screen and (width > 1024px) {
@@ -249,6 +326,16 @@ h2.loading {
   }
   .card {
   }
+  .filters{
+    .yoursown{
+      font-size: 32px;
+    }
+      .lupa{
+      margin-top: 4px;
+      width: 30px;
+      height: 30px;
+    }
+  }
 }
 @media screen and (width > 1440px) {
   h2 {
@@ -257,5 +344,8 @@ h2.loading {
   .carousel {
   }
   .card {
+  }
+   .yoursown{
+    font-size: 400px;
   }
 }

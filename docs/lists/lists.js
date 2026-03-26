@@ -69,11 +69,11 @@ document.addEventListener("DOMContentLoaded", () => {
          if (skip!=0){
             skip = skip -10;
          }
-         listsController(listContainer,getLists,selectElement.value, searchElement.value,skip,10)
+         listsController(listContainer,getLists,currentSort, searchElement.value,skip,10)
       })
        nextElement.addEventListener("click", ()=>{
          skip = skip + 10
-         listsController(listContainer,getLists,selectElement.value, searchElement.value,skip,10)
+         listsController(listContainer,getLists,currentSort, searchElement.value,skip,10)
          
       })
    }
