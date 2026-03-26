@@ -36,14 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
       deleteListController(listContainer)
       handleEditRedirect(listContainer)
    }
+   let currentSort = "name-asc"
+   let skip = 0;
+   const searchElement = document.querySelector('#searching')
+   const beforeElement = document.querySelector('#prev-btn')
+   const nextElement = document.querySelector('#next-btn')
+
    if (filterContainer){
-      const searchElement = document.querySelector('#searching')
       const sortElement = document.querySelector('.sort-options')
-      let currentSort = ""
       filterContainer.addEventListener("input",()=>{
-          listsController(listContainer,getLists,currentSort,searchElement.value)
+          listsController(listContainer,getLists,currentSort,searchElement.value,skip)
       })
       filterContainer.addEventListener("click", async(e) =>{
+         e.preventDefault()
          if(e.target.id.includes("name-asc")){
            sortElement.classList.add('active')
             currentSort = "name-asc"
@@ -60,20 +65,21 @@ document.addEventListener("DOMContentLoaded", () => {
    
    }
    if (paginationContainer){
-      const beforeElement = document.querySelector('#prev-btn')
-      const nextElement = document.querySelector('#next-btn')
+     
       const pageElement = document.querySelector('#page-info')
-      let skip = 0;
+      
 
       beforeElement.addEventListener("click", ()=>{
+         e.preventDefault()
          if (skip!=0){
             skip = skip -10;
          }
-         listsController(listContainer,getLists,currentSort, searchElement.value,skip,10)
+         listsController(listContainer,getLists,currentSort, searchElement.value,skip)
       })
        nextElement.addEventListener("click", ()=>{
+         e.preventDefault()
          skip = skip + 10
-         listsController(listContainer,getLists,currentSort, searchElement.value,skip,10)
+         listsController(listContainer,getLists,currentSort, searchElement.value,skip)
          
       })
    }
