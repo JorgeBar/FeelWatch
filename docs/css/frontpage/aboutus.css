@@ -35,11 +35,20 @@
 .session-button{
     width: 50%;
     margin: 0 auto;
-    margin-bottom: 1rem;
+    margin-bottom: 2.5rem;
     text-align: center;
     
     a{
-        color: var(--bg-color);
+        border-radius: 40px ;
+        background-color: var(--green-Matrix);
+        color:var(--light-gray);
+        &:hover{
+            color: var(--green-Matrix);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+        }
+
     }
     font-size: 20px;
 }
