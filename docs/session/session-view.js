@@ -25,14 +25,14 @@ export function buildUnauthorizedNav(){
 
 export function buildAuthorizedButton(){
     return `
-        <a class="main-btn" href="creacionLista.html" class="btn">Make your Own Personal Lists</a>
+        <a class="main-btn" href="creacionLista.html" class="btn">New List</a>
     `
 }
 
 export function buildUnauthorizedButton(){
     return `
       
-        <a class="main-btn" href="SignUp.html">Register to create your own List yourself!</a>
+        <a class="main-btn" href="SignUp.html">Register to create your own List!</a>
        
     `
 }
