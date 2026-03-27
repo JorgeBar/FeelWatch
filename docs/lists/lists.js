@@ -5,7 +5,7 @@ import {sessionController } from "../session/session-controller.js"
 import {spinnerController} from "../spinner/spinner-controller.js"
 import { deleteListController } from "./delete-list/delete-list-controller.js"
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded",async () => {
 
    const listContainer = document.querySelector("#lists-loading")
    const notificationContainer = document.querySelector("#notification-test")
@@ -38,11 +38,16 @@ document.addEventListener("DOMContentLoaded", () => {
    }
    let currentSort = "name-asc"
    let skip = 0;
+   const result = await listsController(listContainer, getLists)
+   const page = result.page
+   const totalPages = result.totalPages
+
    const searchElement = document.querySelector('#searching')
    const beforeElement = document.querySelector('#prev-btn')
    const nextElement = document.querySelector('#next-btn')
-   const pageElement = document.querySelector('#page-info')
    const sortElement = document.querySelector('.sort-options')
+   const pageElement = document.querySelector('#page-info')
+   pageElement.textContent = `${page} / ${totalPages}`
 
 
    if (filterContainer){

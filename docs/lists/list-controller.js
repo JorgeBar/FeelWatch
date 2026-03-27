@@ -40,6 +40,7 @@ export async function listsController(listContainer, fetchFunction, sort = "name
 
     listContainer.replaceChildren(...dummy.childNodes);
     fireEvent("Listas cargadas correctamente", "success", listContainer);
+    return { page: lists.page, totalPages: lists.totalPages }
   } catch (error) {
     fireEvent(error.message, "error", listContainer);
   } //finally {

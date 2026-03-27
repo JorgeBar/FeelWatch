@@ -115,6 +115,9 @@ h2 {
     }
     
 }
+#page-info{
+  color: var(--green-Matrix);
+}
 .carousel {
   --cards-visible: 2;
   --cards-gap: 0.75rem;
