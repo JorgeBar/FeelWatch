@@ -117,6 +117,8 @@ h2 {
 }
 #page-info{
   color: var(--green-Matrix);
+  font-size: 12px;
+
 }
 .carousel {
   --cards-visible: 2;

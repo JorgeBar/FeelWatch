@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded",async () => {
    const nextElement = document.querySelector('#next-btn')
    const sortElement = document.querySelector('.sort-options')
    const pageElement = document.querySelector('#page-info')
-   pageElement.textContent = `${page} / ${totalPages}`
+   pageElement.textContent = `${page} of ${totalPages}`
 
 
    if (filterContainer){
