@@ -39,9 +39,9 @@ h2 {
     font-size: 12px;
     display: flex;
     flex-direction: row;
-    justify-content: right;
     align-items: center;
-    margin: 0.8rem 0.6rem 1.8rem 0.6rem;
+    width: 80%;
+    margin: 0.8rem auto 1.8rem auto;
     gap:2px;
     label{
       cursor: pointer;
