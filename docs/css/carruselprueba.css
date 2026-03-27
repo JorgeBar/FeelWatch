@@ -84,7 +84,8 @@ h2 {
             }
             &:hover{
               background-color:var(--green-Matrix);
-              color: white;
+              transition: background-color 0.3s ease, color 0.3s ease;
+              color: var(--bg-color);
               
             }
         }
@@ -108,7 +109,8 @@ h2 {
         border-width: 1.5px;
          &:hover{
               background-color:var(--green-Matrix);
-              color: white;
+              transition: background-color 0.3s ease, color 0.3s ease;
+              color: var(--bg-color);
             }
     }
     
@@ -285,11 +287,12 @@ h2.loading {
     }
    .filters{
     .yoursown{
-      width: 85%;
       font-size: 24px;
     }
     font-size: 14px;
     .sort-options{
+      display: flex;
+      gap:8px;
       font-size: 12px;
       padding: 1rem;
     }
