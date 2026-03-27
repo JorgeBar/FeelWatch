@@ -14,7 +14,7 @@ export function buildAuthorizedNav(){
 export function buildUnauthorizedNav(){
         return `
     <li><a class= "link active" href="index.html">Home </a></li>
-    <li><a class= "link" href="#about">About Us</a></li>
+    <li><a class= "link" href="index.html#about">About Us</a></li>
     <li><a class="link" href="listas_template.html">Lists</a></li>
     <li><a class="link" href="login.html">Login</a></li>
     <li><a class="link hidden-btn">Lang</a></li>

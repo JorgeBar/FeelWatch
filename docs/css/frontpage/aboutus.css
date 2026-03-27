@@ -5,158 +5,150 @@
   width: 85vw;
   margin: 0 auto;
   gap: 20px;
-  
 }
-
 
 .textabout {
-    text-align: center;
-    opacity: 1;
-    margin: 0 auto;
-    width: 85vw;
-    height: auto;
-    padding: 0.4rem;
-    font-size: 18px;
-    p{
-        text-align: left;
-    }
-    align-content: center;
-    
+  text-align: center;
+  opacity: 1;
+  margin: 0 auto;
+  width: 85vw;
+  height: auto;
+  padding: 0.4rem;
+  font-size: 18px;
+  p {
+    text-align: left;
+  }
+  align-content: center;
 }
-  
 
 .imgabout {
-    height: 25vh;
-    width: 75vw;
-    justify-content: center;
-    align-content: center;
-    margin: 0 auto;
+  height: 25vh;
+  width: 75vw;
+  justify-content: center;
+  align-content: center;
+  margin: 0 auto;
 }
-.session-button{
-    width: 50%;
-    margin: 0 auto;
-    margin-bottom: 2.5rem;
-    text-align: center;
-    
-    a{  
-        position: relative;
-        border-radius: 40px ;
-        background-color: transparent;
-        color:var(--light-gray);
-        transition: color 0.3s ease;
-        
-        &::after {
-         content: "";
-         position: absolute;
-         left: 0;
-         bottom: -2px;
-         width: 0;
-         height: 2px;
-         background-color: var(--green-Matrix);
-         transition: width 0.7s ease;
- }
-        &:hover{
-            color: var(--green-Matrix);
-            &::after {
-            width: 92%;
-        }
-        }
+.session-button {
+  width: 50%;
+  margin: 0 auto;
+  margin-bottom: 2.5rem;
+  text-align: center;
 
+  a {
+    position: relative;
+    border-radius: 40px;
+    background-color: transparent;
+    color: var(--light-gray);
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: var(--green-Matrix);
+      &::after {
+        width: 92%;
+      }
     }
-    font-size: 20px;
+  }
+  font-size: 20px;
 }
-
 
 @media screen and (width > 425px) {
-    .about{
-        display: flex;
-        flex-direction: row;
-        gap: 15px;
-        align-items: center;
-        .textabout{
-            align-items: center;
-            font-size: 15px;
-        }
-        .imgabout{
-            height: 330px;
-            width: 420px;
-        }
+  .about {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    .textabout {
+      align-items: center;
+      font-size: 15px;
     }
-    .session-button{
-        width: 40%;
+    .imgabout {
+      height: 330px;
+      width: 420px;
     }
+  }
+  .session-button {
+    width: 40%;
+  }
 }
-  
+
 @media screen and (width > 768px) {
-    .about{
-        display: flex;
-        flex-direction: row;
-        gap: 12px;
-        align-items: center;
-        .textabout{
-            align-items: center;
-            font-size: 16px;
-        }
-        .imgabout{
-            height: 380px;
-            width: 520px;
-        }
+  .about {
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+    .textabout {
+      align-items: center;
+      font-size: 16px;
     }
-    .session-button{
-        width: 35%;
-        a{
-            margin: auto 0 2rem 0.5rem;
-            text-align: center;
-        }
-        margin-bottom: 1rem;
+    .imgabout {
+      height: 380px;
+      width: 520px;
     }
+  }
+  .session-button {
+    width: 35%;
+    a {
+      margin: auto 0 2rem 0.5rem;
+      text-align: center;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 2px;
+        background-color: var(--green-Matrix);
+        transition: width 0.7s ease;
+      }
+    }
+    margin-bottom: 1rem;
+  }
 }
 
 @media screen and (width > 1024px) {
-    .about{
-        display: flex;
-        flex-direction: row;
-        height: 75vh;
+  .about {
+    display: flex;
+    flex-direction: row;
+    height: 75vh;
 
-        gap: 35px;
-        .textabout{
-            align-items: center;
-            font-size: 20px;
-            
-        }
-        .imgabout{
-            height: 500px;
-            width: 50vw;
-        }
+    gap: 35px;
+    .textabout {
+      align-items: center;
+      font-size: 20px;
     }
-    .session-button{
-        width: 23%;
-            a{
-            margin: auto 0 3rem 0.5rem;
-            text-align: center;
-        }
+    .imgabout {
+      height: 500px;
+      width: 50vw;
     }
+  }
+  .session-button {
+    width: 23%;
+    a {
+      margin: auto 0 3rem 0.5rem;
+      text-align: center;
+    }
+  }
 }
 
 @media screen and (width > 1440px) {
-    .about{
-        display: flex;
-        flex-direction: row;
-        gap: 100px;
-        width: 70vw;
+  .about {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    width: 70vw;
 
-        .textabout{
-            align-items: left;
-            font-size: 20px;
-        }
-        .imgabout{
-            height: 500px;
-            width: 1600px;
-        }
+    .textabout {
+      align-items: left;
+      font-size: 20px;
     }
-    .session-button{
-        width: 25%;
-        font-size: 28px;
+    .imgabout {
+      height: 500px;
+      width: 1600px;
     }
+  }
+  .session-button {
+    width: 25%;
+    font-size: 28px;
+  }
 }
-

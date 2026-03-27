@@ -42,7 +42,7 @@ h2 {
     align-items: center;
     width: 80%;
     margin: 0.8rem auto 1.8rem auto;
-    gap:2px;
+    gap:4px;
     label{
       cursor: pointer;
     }
@@ -51,6 +51,7 @@ h2 {
         background-color: black;
         color: var(--green-Matrix);
         border-radius:  40px ;
+        font-size: 10px;
         border-style:solid;
         border-color: white;
         border-width: 1.5px;
@@ -69,6 +70,9 @@ h2 {
       height: 24px;
     }
     .sort-options{
+      display:flex ;
+      flex-direction: row;
+      gap: 5px;
         button{
             color: var(--green-Matrix);
             background-color: black;
