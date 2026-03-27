@@ -32,7 +32,7 @@ export function buildAuthorizedButton(){
 export function buildUnauthorizedButton(){
     return `
       
-        <a class="main-btn" href="SignUp.html">Register to create your own List!</a>
+        <a class="" id="lists" href="SignUp.html">Register to create your own List!</a>
        
     `
 }
