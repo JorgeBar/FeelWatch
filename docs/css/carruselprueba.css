@@ -280,7 +280,8 @@ h2.loading {
   .card {
   }
     h2{
-      width: 90%;
+      width: 85%;
+      font-size: 24px;
     }
    .filters{
     .yoursown{
@@ -310,6 +311,9 @@ h2.loading {
     --cards-visible: 4;
     width: 80%;
   }
+  h2{
+    width: 70%;
+  }
   
   .filters{
     .yoursown{
@@ -327,6 +331,7 @@ h2.loading {
 @media screen and (width > 1024px) {
   h2 {
     font-size: 32px;
+    width: 70%;
   }
   .carousel {
     --cards-visible: 5;
@@ -348,6 +353,7 @@ h2.loading {
 @media screen and (width > 1440px) {
   h2 {
     font-size: 28px;
+    width: 70%;
   }
   .carousel {
   }
