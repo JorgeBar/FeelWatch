@@ -6,12 +6,13 @@ body {
   font-family: var(--main-font-family);
 }
 h2 {
-  width: 70%;
+  width: 80%;
+  font-size: 20px;
   margin: 0 auto 1rem auto;
 }
 .yoursown{
   font-size: 15px;
-  margin-right: 8px;
+  margin-right: auto;
   a{
     text-decoration:none;
     color: var(--main-text-color);
@@ -40,8 +41,8 @@ h2 {
     flex-direction: row;
     justify-content: right;
     align-items: center;
-    margin: 0.8rem 0.8rem;
-    gap:5px;
+    margin: 0.8rem 0.6rem 1.8rem 0.6rem;
+    gap:2px;
     label{
       cursor: pointer;
     }
@@ -61,7 +62,7 @@ h2 {
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 2px;
+      gap: 4px;
     }
     .lupa{
       width: 24px;
@@ -278,11 +279,18 @@ h2.loading {
   }
   .card {
   }
+    h2{
+      width: 90%;
+    }
    .filters{
     .yoursown{
       font-size: 24px;
     }
-    font-size: 16px;
+    font-size: 14px;
+    .sort-options{
+      font-size: 12px;
+      padding: 1rem;
+    }
     justify-content: center;
     .lupa{
       margin-top: 4px;
@@ -302,13 +310,13 @@ h2.loading {
     --cards-visible: 4;
     width: 80%;
   }
-  .card {
-  }
+  
   .filters{
+    .yoursown{
+      margin-right: auto;
+    }
   }
-  .yoursown{}
   .search-container{
-    margin-left: 300px;
   }
   .pagination{
     button{
@@ -318,7 +326,7 @@ h2.loading {
 }
 @media screen and (width > 1024px) {
   h2 {
-    font-size: 16px;
+    font-size: 32px;
   }
   .carousel {
     --cards-visible: 5;
