@@ -356,11 +356,18 @@ h2.loading {
   .filters{
     .yoursown{
       font-size: 32px;
+      
+    }
+    input{
+      font-size: 14px;
     }
       .lupa{
       margin-top: 4px;
       width: 30px;
       height: 30px;
+    }
+    .sort-options{
+      font-size: 14px;
     }
   }
 }
