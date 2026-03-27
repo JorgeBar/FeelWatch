@@ -49,6 +49,9 @@ document.addEventListener("DOMContentLoaded",async () => {
    const pageElement = document.querySelector('#page-info')
    pageElement.textContent = `${page} of ${totalPages}`
 
+   document.querySelector('.yoursown a').addEventListener('click', (e) => {
+    e.stopPropagation()
+})
 
    if (filterContainer){
       filterContainer.addEventListener("search",()=>{
