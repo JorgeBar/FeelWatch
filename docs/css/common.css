@@ -61,7 +61,7 @@ a{
   .main-btn{
     cursor: pointer;
     &:hover {
-      background-color: var(--main-brand-color-light);
+
       
     }
   }
