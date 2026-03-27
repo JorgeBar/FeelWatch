@@ -3,7 +3,7 @@ import { jwtDecode } from 'https://cdn.jsdelivr.net/npm/jwt-decode@4.0.0/build/e
 export async function  authenticatedFetch(url, options) {
     const response = await fetch(url, options)
         if(response.status === 401){
-            window.location.href = '/docs/login.html'
+            window.location.href = 'login.html'
             throw new Error('Unaunthorized')
         }
         return response
@@ -15,7 +15,7 @@ export function isTokenExpired() {
   const token = localStorage.getItem("jwt");
 
   if (!token) {
-    window.location.href = "/docs/login.html";
+    window.location.href = "login.html";
 
 }
   const decoded = jwtDecode(token);
@@ -23,6 +23,6 @@ export function isTokenExpired() {
   const date = Date.now() / 1000;
 
   if (exp < date) {
-    window.location.href = "/docs/login.html";
+    window.location.href = "login.html";
   }
 }
