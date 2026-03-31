@@ -90,7 +90,7 @@ export async function postRegister(req, res, next) {
     
     const errors = validationResult(req).array();
     console.log("BODY:", req.body);
-      console.log("VALIDATION ERRORS:", errors.array());
+      console.log("VALIDATION ERRORS:", errors);
 
     //buscar el usuario en la base de datos
     const existingUser = await User.findOne({ email: email.toLowerCase() });
