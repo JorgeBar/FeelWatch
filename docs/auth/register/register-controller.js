@@ -52,6 +52,7 @@ export function signupController(form ,registerNotification){
         window.location.href = "/login.html"
 
         } catch (error) {
+            console.log("BACKEND ERRORS:", error.errors)
            const backendErrors = error.errors
            registerEvent(backendErrors,form)
         }
