@@ -84,8 +84,9 @@ export async function postRegister(req, res, next) {
         "Debe tener al menos: 8 caracteres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
       )
     .run(req);
-
+      console.log("BODY:", req.body);
     const errors = validationResult(req);
+    console.log("VALIDATION ERRORS:", errors.array());
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
