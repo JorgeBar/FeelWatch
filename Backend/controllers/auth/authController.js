@@ -60,10 +60,10 @@ export async function postRegister(req, res, next) {
   try {
     await body("username")  
     .notEmpty()
-    .withMessage("El username es obligatorio")
+    .withMessage("Username is mandatory")
     .trim()
     .isLength({ min: 4, max: 15 })
-    .withMessage("Debe tener como mínimo 4 caracteres y máximo 15")
+    .withMessage("Must have atleast 3 characters and a maximu of 15")
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/)
     .withMessage("Only may contain characters and numbers  ")
     .run(req);
@@ -81,7 +81,7 @@ export async function postRegister(req, res, next) {
     .withMessage("Password must contains altleast 8 characteres")
     .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[=@#$])/)
     .withMessage(
-        "Debe tener al menos: 8 caracteres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
+        "Must have atleast: 8 characteres,min one cap ,one number and one of these special characteres: =@#$"
       )
     .run(req);
     
