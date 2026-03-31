@@ -35,8 +35,8 @@ export function signupController(form ,registerNotification){
         //}
         
         if(errors.length === 0){
-            console.log('Llamando a handleCreateUser')  // AÑADE ESTO
-            handleCreateUser(username,email,password)            
+            console.log('Llamando a handleCreateUser')  
+            handleCreateUser(form,username,email,password)            
             
         }//else{
            // registerEvent(errors,form)
