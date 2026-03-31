@@ -6,8 +6,8 @@ export function signupController(form ,registerNotification){
     form.addEventListener("submit",(event) =>{
         event.preventDefault();
 
-        const userNameElement = form.querySelector("#name")
-        const userEmailElement = form.querySelector("#mail")
+        const userNameElement = form.querySelector("#username")
+        const userEmailElement = form.querySelector("#email")
         const passwordElement = form.querySelector("#password")
         const paswordConfirmElement = form.querySelector("#password-confirm")
 
@@ -21,10 +21,10 @@ export function signupController(form ,registerNotification){
         //validarlos
         const emailRegExp = new RegExp(REGEXP.mail);
         if (!emailRegExp.test(email)){
-            errors.push({ message:'*Must be a valid email or you already signed', field: 'mail'})
+            errors.push({ message:'*Must be a valid email or you already signed', field: 'email'})
         };
         if(!username){
-            errors.push({message:'*Name already taken', field:'name'})
+            errors.push({message:'*Name already taken', field:'username'})
         }
 
         if (password !== passwordConfirmed){
