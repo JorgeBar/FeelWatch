@@ -33,11 +33,13 @@ export function signupController(form ,registerNotification){
         //for (const error of errors){
           //  registerEvent
         //}
-        registerEvent(errors,form)
-
+        
         if(errors.length === 0){
-        console.log('Llamando a handleCreateUser')  // AÑADE ESTO
-         handleCreateUser(username,email,password)            
+            console.log('Llamando a handleCreateUser')  // AÑADE ESTO
+            handleCreateUser(username,email,password)            
+            
+        }else{
+            registerEvent(errors,form)
 
         }
     })
@@ -50,7 +52,7 @@ export function signupController(form ,registerNotification){
         window.location.href = "/login.html"
 
         } catch (error) {
-            alert("error")
+            console.log("error")
         }
     }
 
