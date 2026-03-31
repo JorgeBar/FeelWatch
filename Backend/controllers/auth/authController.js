@@ -62,10 +62,10 @@ export async function postRegister(req, res, next) {
     .notEmpty()
     .withMessage("El username es obligatorio")
     .trim()
+    .isLength({ min: 4, max: 15 })
+    .withMessage("Debe tener como mínimo 4 caracteres y máximo 15")
     .matches(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/)
-    .withMessage("Must contain a Cap and a Special character")
-    .isLength({ min: 3, max: 15 })
-    .withMessage("Debe tener como mínimo 3 caracteres y máximo 15")
+    .withMessage("Only may contain characters and numbers  ")
     .run(req);
     await body("email")
     .notEmpty()

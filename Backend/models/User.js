@@ -4,7 +4,7 @@ import { sendEmail as sendEmailLib } from '../lib/emailManager.js';
 
 
 const userSchema = new Schema({
-    username: {type: String, required: true, unique: true},
+    username: {type: String, required: true},
     email: {type: String, required:true, unique :true},
     password: {type:String ,required: true},
     listsCreated: [{type: mongoose.Schema.Types.ObjectId, ref : "List"}]
