@@ -81,10 +81,9 @@ export async function postRegister(req, res, next) {
     .withMessage("Password must contains altleast 8 characteres")
     .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[=@#$])/)
     .withMessage(
-        "Debe tener al menos: 8 caracetres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
+        "Debe tener al menos: 8 caracteres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
       )
     .run(req);
-    //hay que poner más validaciones
 
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -97,7 +96,7 @@ export async function postRegister(req, res, next) {
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     //si no lo encuentro, o la contraseña no coincide --> eerror
     if (existingUser) {
-      return res.status(400).json({ error: "El usuario ya existe" });
+      return res.status(400).json({errors:[{ msg: "Mail is already taken",path:"email" }]});
     }
     // se crea el usuario
     const hashedPassword = await User.hashPassword(password);

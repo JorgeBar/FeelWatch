@@ -21,14 +21,14 @@ export function signupController(form ,registerNotification){
         //validarlos
         const emailRegExp = new RegExp(REGEXP.mail);
         if (!emailRegExp.test(email)){
-            errors.push({ message:'Must be a valid email or you already signed', field: 'mail'})
+            errors.push({ message:'*Must be a valid email or you already signed', field: 'mail'})
         };
         if(!username){
-            errors.push({message:'Name already taken', field:'name'})
+            errors.push({message:'*Name already taken', field:'name'})
         }
 
         if (password !== passwordConfirmed){
-            errors.push({message:'Passwords does not match', field:'password'})
+            errors.push({message:'*Passwords does not match', field:'password'})
         }
         //for (const error of errors){
           //  registerEvent
@@ -38,21 +38,22 @@ export function signupController(form ,registerNotification){
             console.log('Llamando a handleCreateUser')  // AÑADE ESTO
             handleCreateUser(username,email,password)            
             
-        }else{
-            registerEvent(errors,form)
+        }//else{
+           // registerEvent(errors,form)
 
-        }
+        //}
     })
 
 }
 
-    async function handleCreateUser(username,email,password){
+    async function handleCreateUser(form,username,email,password){
         try {
         await createUser(username,email,password)
         window.location.href = "/login.html"
 
         } catch (error) {
-            console.log("error")
+           const backendErrors = error.errors
+           registerEvent(backendErrors,form)
         }
     }
 

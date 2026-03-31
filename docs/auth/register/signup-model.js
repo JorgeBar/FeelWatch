@@ -13,6 +13,7 @@ export async function createUser(username, email, password){
     })
 
     if(!response.ok){
-        throw new Error("Error creando usuario")
+        const data = await response.json()
+        throw data
     }
 }
