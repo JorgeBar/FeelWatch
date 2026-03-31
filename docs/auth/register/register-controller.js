@@ -1,7 +1,7 @@
 import { REGEXP  } from "../../utils/constants.js";
 import { createUser } from "./signup-model.js"
 
-export function signupController(form){
+export function signupController(form ,registerNotification){
     //obtener los datos del formulario
     form.addEventListener("submit",(event) =>{
         event.preventDefault();
@@ -21,18 +21,20 @@ export function signupController(form){
         //validarlos
         const emailRegExp = new RegExp(REGEXP.mail);
         if (!emailRegExp.test(email)){
-            errors.push('Formato de mail incorrecto')
+            errors.push({ message:'Must be a valid email or you already signed', field: 'mail'})
         };
         if(!username){
-            errors.push('Debe haber un nombre')
+            errors.push({message:'Name already taken', field:'name'})
         }
 
         if (password !== passwordConfirmed){
-            errors.push('Las passwords no coinciden')
+            errors.push({message:'Passwords does not match', field:'password'})
         }
-        for (const error of errors){
-            //mostrar notificaciones
-        }
+        //for (const error of errors){
+          //  registerEvent
+        //}
+        registerEvent()
+
         if(errors.length === 0){
         console.log('Llamando a handleCreateUser')  // AÑADE ESTO
          handleCreateUser(username,email,password)            
@@ -51,3 +53,13 @@ export function signupController(form){
             alert("error")
         }
     }
+
+
+    function registerEvent(errors, element) {
+    const customEvent = new CustomEvent("register-info", {
+        detail: {
+            errors
+        },
+    });
+  element.dispatchEvent(customEvent);
+}
