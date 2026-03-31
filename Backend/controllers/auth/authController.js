@@ -85,19 +85,22 @@ export async function postRegister(req, res, next) {
       )
     .run(req);
       console.log("BODY:", req.body);
-    const errors = validationResult(req);
-    console.log("VALIDATION ERRORS:", errors.array());
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
+      console.log("VALIDATION ERRORS:", errors.array());
+      
+      
+      const { username, email, password } = req.body;
 
-    const { username, email, password } = req.body;
+      const errors = validationResult(req).array();
 
     //buscar el usuario en la base de datos
     const existingUser = await User.findOne({ email: email.toLowerCase() });
     //si no lo encuentro, o la contraseña no coincide --> eerror
     if (existingUser) {
-      return res.status(400).json({errors:[{ msg: "Mail is already taken",path:"email" }]});
+      errors.push({ msg: "Mail is already taken",path:"email" });
+    }
+
+     if (errors.length >0) {
+      return res.status(400).json({ errors });
     }
     // se crea el usuario
     const hashedPassword = await User.hashPassword(password);
