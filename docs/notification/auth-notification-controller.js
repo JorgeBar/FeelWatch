@@ -5,6 +5,7 @@ export function registerNotification(signupForm,errors){
     const inputForm = signupForm.querySelector(`#${error.field}`)
     const parentInput = inputForm.parentElement
     const notification = buildRegisterNotification(error)
+    console.log(error.path)
     parentInput.appendChild(notification)
     }
 }
