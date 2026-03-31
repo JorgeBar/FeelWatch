@@ -84,13 +84,13 @@ export async function postRegister(req, res, next) {
         "Debe tener al menos: 8 caracteres, una mayúscula ,una minúscula, un número y uno de estos carácteres especiales: =@#$"
       )
     .run(req);
-      console.log("BODY:", req.body);
+    
+    
+    const { username, email, password } = req.body;
+    
+    const errors = validationResult(req).array();
+    console.log("BODY:", req.body);
       console.log("VALIDATION ERRORS:", errors.array());
-      
-      
-      const { username, email, password } = req.body;
-
-      const errors = validationResult(req).array();
 
     //buscar el usuario en la base de datos
     const existingUser = await User.findOne({ email: email.toLowerCase() });
@@ -98,7 +98,7 @@ export async function postRegister(req, res, next) {
     if (existingUser) {
       errors.push({ msg: "Mail is already taken",path:"email" });
     }
-
+    console.log("FINAL ERRORS", errors)
      if (errors.length >0) {
       return res.status(400).json({ errors });
     }
