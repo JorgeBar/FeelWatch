@@ -18,7 +18,11 @@ export function signupController(form) {
        })
     function validateBothPass(){
         const errors =  validatePassword(passwordElement.value, passwordConfirmElement.value)
-        validationFrontend(form,errors,"password")
+        const passwordErrors = errors.filter(e => e.path === "password");
+        const confirmErrors = errors.filter(e => e.path === "password-confirm");
+
+        validationFrontend(form, passwordErrors, "password");
+        validationFrontend(form, confirmErrors, "password-confirm");
     }   
         passwordElement.addEventListener("blur", validateBothPass)
         passwordConfirmElement.addEventListener("blur",validateBothPass)
