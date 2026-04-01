@@ -54,15 +54,12 @@ function validateUserName(username) {
       msg: "The name must have atleast 4 characteres",
       path: "username",
     });
-  }
-
-  if (username.trim().length > 15) {
+  }else if (username.trim().length > 15) {
     errors.push({
       msg: "The name is too long. The limit is 15 characteres",
       path: "username",
     });
-  }
-  if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/.test(username.trim())) {
+  }else if (!/^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9 -]+$/.test(username.trim())) {
     errors.push({
       msg: "Only numbers, characteres, spaces and hyphens are allowed",path:"username"
     });
