@@ -12,6 +12,6 @@ document.addEventListener("DOMContentLoaded",()=>{
     })
 
     signupForm.addEventListener("frontend-errors",(event)=>{
-        registerNotification(signupForm,event.detail.errors)
+        registerNotification(signupForm,event.detail.errors,event.detail.path)
     })
 })

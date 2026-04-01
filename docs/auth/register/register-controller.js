@@ -96,9 +96,9 @@ function validatePassword(password,passwordConfirmed){
     }else if(!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[=@#$])/.test(password.trim())){
         errors.push({msg:"Must have atlest 8 characters, 1 cap, 1 number and one special characterer like these:  =@#$ ", path:"password"})
     }
-    if(password.trim() !== passwordConfirmed.trim()){
-        errors.push({msg:"Must must be matched", path:"password-confirm"})
-    }
+    if (passwordConfirmed.trim() && password.trim() && password.trim() !== passwordConfirmed.trim()) {
+    errors.push({ msg: "Must be matched", path: "password-confirm" });
+  }
     return errors;
 }
 
