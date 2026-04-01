@@ -9,7 +9,7 @@ export function registerNotification(signupForm,errors){
         
     const parentInput = inputForm.parentElement
     const notification = buildRegisterNotification(error)
-    console.log(error.path)
+    parentInput.querySelectorAll(".noti").forEach(n => n.remove())
     parentInput.appendChild(notification)
     }
 }
