@@ -28,7 +28,7 @@ export async function getCheckAvailableEmail(email){
            throw new Error("Recurso no existente")
            }
            const data = await response.json();
-           return data
+           return data.available
        } catch (error) {
         throw new Error(error.message)
        } 
