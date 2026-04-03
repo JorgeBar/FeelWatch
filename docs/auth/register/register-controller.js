@@ -20,7 +20,6 @@ export function signupController(form) {
          if(available === false){
           errors = [{msg:"Mail is already taken", path:"email"}]
          } 
-          return available
          }
            validationFrontend(form,errors,"email")
        })
