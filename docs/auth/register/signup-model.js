@@ -17,3 +17,21 @@ export async function createUser(username, email, password){
         throw data
     }
 }
+
+
+export async function getCheckAvailableEmail(email){
+
+       try {
+           const response = await fetch("https://feelwatch.onrender.com/auth/availableEmail?email=" + email)
+        
+           if(!response.ok){
+           throw new Error("Recurso no existente")
+           }
+           const data = await response.json();
+           return data
+       } catch (error) {
+        throw new Error(error.message)
+       } 
+      
+     
+    }

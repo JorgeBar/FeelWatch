@@ -1,5 +1,6 @@
 import { REGEXP } from "../../utils/constants.js";
 import { createUser } from "./signup-model.js";
+import { getCheckAvailableEmail } from "./signup-model.js";
 
 
 export function signupController(form) {
@@ -12,8 +13,15 @@ export function signupController(form) {
          const errors =  validateUserName(event.target.value)
            validationFrontend(form,errors,"username")
        })
-    userEmailElement.addEventListener("blur", (event)=>{
-         const errors =  validateEmail(event.target.value)
+    userEmailElement.addEventListener("blur",async (event)=>{
+         let errors =  validateEmail(event.target.value)
+         if (errors.length === 0){
+          const available = await getCheckAvailableEmail(event.target.value)
+         if(available === false){
+          errors = [{msg:"Mail is already taken", path:"email"}]
+         } 
+          return available
+         }
            validationFrontend(form,errors,"email")
        })
     function validateBothPass(){

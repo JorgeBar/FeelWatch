@@ -119,6 +119,24 @@ export async function postRegister(req, res, next) {
     res.status(500).send("Error al registar usuario");
   }
 }
+export async function checkEmailState(req,res,next){
+  try {
+    const email = (req.query.email || "").trim();
+    if(!email){
+      return res.status(400).send("No email received")
+    }
+    const existingUser = await User.findOne({ email: email.toLowerCase() });
+    const available = !existingUser
+
+    return res.status(200).json({available})
+    
+  } catch (error) {
+    return res.status(500).send("Error asking email availability")
+  }
+      
+
+}
+
 export async function forgotPassword(req, res, next) {
   try {
     const { newPassword } = req.body;

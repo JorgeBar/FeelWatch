@@ -61,7 +61,9 @@ app.get('/change-locale/:locale', langController.changeLocale)
 app.get('/' , homeController.index)
 app.get('/auth/login', authController.Login)
 app.get('/auth/register' , authController.getRegister)
+app.get('/auth/availableEmail', authController.checkEmailState)
 app.get('auth/forgotPassword', authController.getforgotPassword)
+
 
 app.post('/auth/login', authController.postLogin)
 app.post('/auth/register' , authController.postRegister)
