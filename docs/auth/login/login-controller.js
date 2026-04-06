@@ -14,7 +14,7 @@ export function loginController(loginForm) {
 
     //validarlos
     if(!useremail || !password ){
-      loginEvent({msg:"Must put an email and password"})
+      loginEvent({msg:"Must put an email and password"},loginForm)
       return
     }
 
