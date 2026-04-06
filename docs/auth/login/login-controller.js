@@ -8,25 +8,42 @@ export function loginController(loginForm) {
 
     const userEmailElement = loginForm.querySelector("#mail");
     const passwordElement = loginForm.querySelector("#password");
-
+    
     const useremail = userEmailElement.value;
     const password = passwordElement.value;
 
     //validarlos
-    const emailRegExp = new RegExp(REGEXP.mail);
-    if (!emailRegExp.test(useremail)) {
-      alert("Formato de email incorrecto");
-    } else {
-      handleLoginUser(useremail, password);
-    }
+   // const emailRegExp = new RegExp(REGEXP.mail);
+    //if (!emailRegExp.test(useremail)) {
+     // alert("Formato de email incorrecto");
+    //} else {
+      handleLoginUser(form,useremail, password);
+    //}
   });
 }
 
-async function handleLoginUser(useremail, password) {
+async function handleLoginUser(form,useremail, password) {
+
+  try {
     const token = await Login(useremail, password);
 
     localStorage.setItem('jwt', token)
 
     window.location.href = "/index.html";
+
+    
+  } catch (error) {
+    const backendErrors = error.error
+    loginEvent(backendErrors,form)
+  }
  
+}
+
+function loginEvent(error, element){
+  const customEvent = new CustomEvent("login-info",{
+    detail:{
+      error,
+    },
+  });
+  element.dispatchEvent(customEvent)
 }

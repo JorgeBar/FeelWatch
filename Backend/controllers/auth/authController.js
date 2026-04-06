@@ -20,7 +20,7 @@ export async function postLogin(req, res, next) {
     //si no lo encuentro, o la contraseña no coincide --> eerror
     if (!user || !(await user.comparePassword(password))) {
       console.log('Password match:', password)
-      return res.status(401).json({ error: "Credenciales incorrectas" });
+      return res.status(401).json({ error: "Invalid credentials" });
     }
 
     // si el usuario existe y la contraseña coincide --> apuntar en sus sesión que está logueado
@@ -45,7 +45,7 @@ export async function postLogin(req, res, next) {
     // res.json({message: "Login correcto", userId: user._id})
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error interno al hacer login" });
+    res.status(500).json({ error: "Something went wrong" });
   }
 }
 

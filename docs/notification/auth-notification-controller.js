@@ -17,4 +17,9 @@ export function registerNotification(signupForm, errors, path) {
   }
 }
 
-export function loginNotification() {}
+export function loginNotification(loginForm,error) {
+  
+  loginForm.querySelectorAll(".noti").forEach((n) => n.remove());
+  const notification = buildRegisterNotification(error)
+  loginForm.appendChild(notification);
+}

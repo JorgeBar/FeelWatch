@@ -13,7 +13,8 @@ export async function Login(email, password){
     })
 
     if(!response.ok){
-        throw new Error("Credenciales incorrectas")
+        const data = await response.json()
+        throw data
     }
     
     const {tokenJWT} = await response.json();
