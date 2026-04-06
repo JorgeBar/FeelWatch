@@ -13,6 +13,11 @@ export function loginController(loginForm) {
     const password = passwordElement.value;
 
     //validarlos
+    if(!useremail || !password ){
+      loginEvent({msg:"Must put an email and password"})
+      return
+    }
+
    // const emailRegExp = new RegExp(REGEXP.mail);
     //if (!emailRegExp.test(useremail)) {
      // alert("Formato de email incorrecto");
