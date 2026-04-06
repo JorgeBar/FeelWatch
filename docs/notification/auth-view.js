@@ -1,12 +1,19 @@
 export function buildRegisterNotification (error){
     const newElementNoti = document.createElement('p')
 
-    newElementNoti.innerHTML = error.msg ?? error.error
+    newElementNoti.innerHTML = error.msg 
     newElementNoti.classList.add('noti')
 
      return newElementNoti
 }
+export function buildLoginNotification(error){
+    const newElementNoti = document.createElement('h2')
 
+    newElementNoti.innerHTML = error.msg
+    newElementNoti.classList.add('noti')
+
+    return newElementNoti
+}
 
 export function succesNotification (success){
     const newElementNoti = document.createElement('p')

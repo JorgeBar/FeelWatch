@@ -33,8 +33,8 @@ async function handleLoginUser(loginForm,useremail, password) {
 
     
   } catch (error) {
-    const backendErrors = error.error
-    loginEvent(backendErrors,loginForm)
+    
+    loginEvent({msg:"Invalid credentials"},loginForm)
   }
  
 }

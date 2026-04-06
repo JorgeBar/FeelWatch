@@ -1,4 +1,4 @@
-import { buildRegisterNotification } from "./auth-view.js";
+import { buildLoginNotification, buildRegisterNotification } from "./auth-view.js";
 
 export function registerNotification(signupForm, errors, path) {
   if (path) {
@@ -19,7 +19,11 @@ export function registerNotification(signupForm, errors, path) {
 
 export function loginNotification(loginForm,error) {
   
-  loginForm.querySelectorAll(".noti").forEach((n) => n.remove());
-  const notification = buildRegisterNotification(error)
-  loginForm.appendChild(notification);
+  const password = loginForm.querySelector('#password')
+  const parentPassword = password.parentElement
+
+  parentPassword.querySelectorAll(".noti").forEach((n) => n.remove());
+  
+  const notification = buildLoginNotification(error)
+  parentPassword.appendChild(notification);
 }
