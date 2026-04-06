@@ -22,8 +22,8 @@ export function loginNotification(loginForm,error) {
   const password = loginForm.querySelector('#password')
   const parentPassword = password.parentElement
 
-  parentPassword.querySelectorAll(".noti").forEach((n) => n.remove());
-  
+  parentPassword.querySelectorAll(".noti-login").forEach((n) => n.remove());
+
   const notification = buildLoginNotification(error)
   parentPassword.appendChild(notification);
 }

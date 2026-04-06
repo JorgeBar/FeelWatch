@@ -10,7 +10,7 @@ export function buildLoginNotification(error){
     const newElementNoti = document.createElement('h2')
 
     newElementNoti.innerHTML = error.msg
-    newElementNoti.classList.add('noti')
+    newElementNoti.classList.add('noti-login')
 
     return newElementNoti
 }
