@@ -34,7 +34,7 @@ async function handleLoginUser(loginForm,useremail, password) {
     
   } catch (error) {
     const backendErrors = error.error
-    loginEvent(backendErrors,form)
+    loginEvent(backendErrors,loginForm)
   }
  
 }
