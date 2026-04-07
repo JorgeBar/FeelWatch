@@ -3,15 +3,17 @@ import { buildLoginNotification, buildRegisterNotification } from "./auth-view.j
 export function registerNotification(signupForm, errors, path) {
   if (path) {
     const input = signupForm.querySelector(`#${path}`);
-    if (input)
-      input.parentElement.querySelectorAll(".noti").forEach((n) => n.remove());
+    if (input){
+     const fieldContainer = input.closest(".form__input") || input.parentElement;
+      fieldContainer.querySelectorAll(".noti").forEach((n) => n.remove());
+    }
   }
 
   for (const error of errors) {
     const input = signupForm.querySelector(`#${error.path}`);
     if (!input) continue;
 
-    const parentInput = input.parentElement;
+    const fieldContainer = input.closest(".form__input") || input.parentElement;
     const notification = buildRegisterNotification(error);
     parentInput.appendChild(notification);
   }
@@ -20,10 +22,10 @@ export function registerNotification(signupForm, errors, path) {
 export function loginNotification(loginForm,error) {
   
   const password = loginForm.querySelector('#password')
-  const parentPassword = password.parentElement
+  const fieldContainer = password.closest(".form__input") || password.parentElement;
 
-  parentPassword.querySelectorAll(".noti-login").forEach((n) => n.remove());
+  fieldContainer.querySelectorAll(".noti-login").forEach((n) => n.remove());
 
   const notification = buildLoginNotification(error)
-  parentPassword.appendChild(notification);
+  fieldContainer.appendChild(notification);
 }
