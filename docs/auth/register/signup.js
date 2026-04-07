@@ -1,8 +1,10 @@
 import { signupController } from "./register-controller.js"
 import { registerNotification } from "../../notification/auth-notification-controller.js"
+import { showPassword } from "../../utils/show-hide-password.js"
 
 document.addEventListener("DOMContentLoaded",()=>{
     const signupForm = document.querySelector('form')
+    showPassword(signupForm)
     
     signupController(signupForm) 
     signupForm.addEventListener("register-info",(event)=>{
