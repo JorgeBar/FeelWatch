@@ -19,6 +19,8 @@ export async function sendEmail(to, subject, body) {
   const apiSecret = process.env.EMAIL_SERVICE_PASSWORD; 
   const fromEmail = process.env.EMAIL_SERVICE_FROM; 
   const fromName = process.env.EMAIL_SERVICE_FROM_NAME || "FeelWatch";
+  const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString("base64");
+
   //const transport = await createTransport();
   //const result = await transport.sendMail({
     //from: process.env.EMAIL_SERVICE_FROM,
