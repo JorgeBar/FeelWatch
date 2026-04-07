@@ -1,7 +1,7 @@
 import 'dotenv/config';
 import amqplib from "amqplib";
-//import { sendEmail } from "./emailManager.js";
-import { sendEmail } from './emailManagerSendGrid.js';
+import { sendEmail } from "./emailManager.js";
+//import { sendEmail } from './emailManagerSendGrid.js';
 import sharp from "sharp";
 import fs from "fs";
 import path from "path";
