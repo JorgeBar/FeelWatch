@@ -21,6 +21,7 @@
 }
 .form__input {
   display: flex;
+  position: relative;
   flex-direction: column;
   margin-bottom: 0.9rem;
   label {
@@ -28,6 +29,7 @@
   }
   input {
     padding: 0.5rem;
+    width: 90%;
     border-radius: 5px;
     border: none;
     color: white;
@@ -52,6 +54,30 @@
     text-decoration: none;
     color:var(--main-text-color)
    }
+}
+
+.pass-btn--password{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  right: 40px;
+  bottom: 4px;
+}
+.pass-btn--confirm{
+  position: absolute;
+  background-color: transparent;
+  border: none;
+  right: 40px;
+  bottom: 4px;
+}
+.pass-btn span{
+      position: relative;
+}
+.pass-btn span svg{
+      position: absolute;
+}
+.hidden{
+  display: none;
 }
 
 
