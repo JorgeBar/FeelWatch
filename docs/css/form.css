@@ -21,7 +21,6 @@
 }
 .form__input {
   display: flex;
-  position: relative;
   flex-direction: column;
   margin-bottom: 0.9rem;
   label {
@@ -55,13 +54,16 @@
     color:var(--main-text-color)
    }
 }
-
+.field{
+  position: relative;
+}
 .pass-btn--password{
   position: absolute;
   background-color: transparent;
   border: none;
   right: 40px;
   bottom: 4px;
+  cursor: pointer;
 }
 .pass-btn--confirm{
   position: absolute;
@@ -69,6 +71,7 @@
   border: none;
   right: 40px;
   bottom: 4px;
+  cursor: pointer;
 }
 .pass-btn span{
       position: relative;
