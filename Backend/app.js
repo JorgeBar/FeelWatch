@@ -21,7 +21,7 @@ import * as jwtAuth from './lib/jwtAuthMiddleware.js'
 
 await connectMonggose()
 await connectRabbit()
-await startConsumer()
+//await startConsumer()
 
 console.log('Conectado a MongoDB')
 console.log('Conectado a RabbitMQ')
