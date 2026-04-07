@@ -4,6 +4,8 @@ import { loginNotification } from "../../notification/auth-notification-controll
 document.addEventListener("DOMContentLoaded",()=>{
     const loginForm = document.querySelector('form')
     loginController(loginForm) 
+    showPassword(signupForm)
+    
 
     loginForm.addEventListener("login-info",(event)=>{
         loginNotification(loginForm,event.detail.error)
