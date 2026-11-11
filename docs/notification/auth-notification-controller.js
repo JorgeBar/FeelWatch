@@ -15,7 +15,7 @@ export function registerNotification(signupForm, errors, path) {
 
     const fieldContainer = input.closest(".form__input") || input.parentElement;
     const notification = buildRegisterNotification(error);
-    parentInput.appendChild(notification, fieldContainer);
+    fieldContainer.appendChild(notification);
   }
 }
 
