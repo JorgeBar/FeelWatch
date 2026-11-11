@@ -61,6 +61,7 @@ export async function postRegister(req, res, next) {
     await body("username")  
     .notEmpty()
     .withMessage("Username is mandatory")
+    .bail()
     .trim()
     .isLength({ min: 4, max: 15 })
     .withMessage("Must have atleast 3 characters and a maximu of 15")
@@ -70,6 +71,7 @@ export async function postRegister(req, res, next) {
     await body("email")
     .notEmpty()
     .withMessage("Must put an email")
+    .bail()
     .isEmail()
     .withMessage("Must be a valid email format")
     .run(req);
@@ -78,6 +80,7 @@ export async function postRegister(req, res, next) {
     await body("password")
     .notEmpty()
     .withMessage("Must put a password")
+    .bail()
     .isLength({ min: 8 })
     .withMessage("Password must contains altleast 8 characteres")
     .matches(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[=@#$])/)
