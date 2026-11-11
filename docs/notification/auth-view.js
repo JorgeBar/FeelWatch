@@ -20,4 +20,6 @@ export function succesNotification (success){
 
     newElementNoti.innerHTML = success.msg
     newElementNoti.classList.add('success-noti')
+
+    return newElementNoti
 }

@@ -1,6 +1,6 @@
 import { loginController } from "./login-controller.js"
-import { showPassword } from "../../utils/show-hide-password.js"
 import { loginNotification } from "../../notification/auth-notification-controller.js"
+import { showPassword } from "../../utils/show-hide-password.js"
 
 document.addEventListener("DOMContentLoaded",()=>{
     const loginForm = document.querySelector('form')
@@ -14,4 +14,5 @@ document.addEventListener("DOMContentLoaded",()=>{
             event.detail.path
         )
     })
+
 })

@@ -39,7 +39,7 @@ async function handleLoginUser(loginForm,useremail, password) {
     
   } catch (error) {
     
-    loginEvent({msg:"Invalid credentials"},loginForm)
+    loginEvent({ msg: error.error || "Something went wrong, try again" }, loginForm)
   }
  
 }
