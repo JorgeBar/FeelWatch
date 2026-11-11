@@ -69,6 +69,7 @@ export async function postRegister(req, res, next) {
     .run(req);
     await body("email")
     .notEmpty()
+    .withMessage("Must put an email")
     .isEmail()
     .withMessage("Must be a valid email format")
     .run(req);

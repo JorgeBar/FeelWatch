@@ -126,7 +126,6 @@ function registerEvent(errors, element) {
   const customEvent = new CustomEvent("register-info", {
     detail: {
       errors,
-      path
     },
   });
   element.dispatchEvent(customEvent);
