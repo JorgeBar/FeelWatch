@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     signupForm.addEventListener("register-info",(event)=>{
             console.log("evento recibido", event.detail.errors)
 
-        registerNotification(signupForm,event.detail.errors)
+        registerNotification(signupForm,
+            event.detail.errors,
+            event.detail.path)
     })
 
     signupForm.addEventListener("frontend-errors",(event)=>{
