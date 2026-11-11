@@ -6,7 +6,10 @@ export function registerNotification(signupForm, errors, path) {
     if (input){
      const fieldContainer = input.closest(".form__input") || input.parentElement;
       fieldContainer.querySelectorAll(".noti").forEach((n) => n.remove());
-    }
+    }else {
+    // errores del backend: no hay path, se limpia todo el formulario
+    signupForm.querySelectorAll(".noti").forEach((n) => n.remove());
+  }
   }
 
   for (const error of errors) {
