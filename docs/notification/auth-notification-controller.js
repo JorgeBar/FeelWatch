@@ -22,13 +22,13 @@ export function registerNotification(signupForm, errors, path) {
   }
 }
 
-export function loginNotification(loginForm,error) {
+export function loginNotification(loginForm,errors) {
   
   const password = loginForm.querySelector('#password')
   const fieldContainer = password.closest(".form__input") || password.parentElement;
 
   fieldContainer.querySelectorAll(".noti-login").forEach((n) => n.remove());
 
-  const notification = buildLoginNotification(error)
+  const notification = buildLoginNotification(errors)
   fieldContainer.appendChild(notification);
 }
