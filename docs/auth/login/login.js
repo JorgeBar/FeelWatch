@@ -4,8 +4,8 @@ import { showPassword } from "../../utils/show-hide-password.js"
 
 document.addEventListener("DOMContentLoaded",()=>{
     const loginForm = document.querySelector('form')
-    loginController(loginForm) 
     showPassword(loginForm)
+    loginController(loginForm) 
     
 
     loginForm.addEventListener("login-info",(event)=>{
