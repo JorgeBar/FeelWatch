@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded",()=>{
     
 
     loginForm.addEventListener("login-info",(event)=>{
-        loginNotification(loginForm,event.detail.error)
+        loginNotification(loginForm,
+            event.detail.error,
+            event.detail.path
+        )
     })
 })
