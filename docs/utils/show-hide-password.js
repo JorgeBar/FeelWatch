@@ -19,7 +19,7 @@ export function showPassword (form){
 
         }
     })
-      buttonConfirmPass.addEventListener("click",(event) => {
+      buttonConfirmPass?.addEventListener("click",(event) => {
         const eyeOpen = buttonConfirmPass.querySelector('.eye-open')
         const eyeClosed = buttonConfirmPass.querySelector('.eye-closed')
         if(passwordConfirmElement.type ==="password"){
