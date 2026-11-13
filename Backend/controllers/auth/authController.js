@@ -19,7 +19,7 @@ export async function postLogin(req, res, next) {
    
     //si no lo encuentro, o la contraseña no coincide --> eerror
     if (!user || !(await user.comparePassword(password))) {
-      console.log('Password match:', password)
+      console.log('Login failed for:', email) 
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
@@ -35,10 +35,10 @@ export async function postLogin(req, res, next) {
           next(err);
           return;
         }
+        console.log('Login ok:', user.email)  
         res.json({ tokenJWT });
       }
     );
-    console.log(process.env.JWT_SECRET);
     //req.session.userId = user._id
     //req.session.userEmail = user.email
 
@@ -93,8 +93,8 @@ export async function postRegister(req, res, next) {
     const { username, email, password } = req.body;
     
     const errors = validationResult(req).array();
-    console.log("BODY:", req.body);
-      console.log("VALIDATION ERRORS:", errors);
+      console.log("Register attempt:", username, email);
+      console.log("VALIDATION ERRORS:", errors.map(e => ({ path: e.path, msg: e.msg })));
 
     //buscar el usuario en la base de datos
     const existingUser = await User.findOne({ email: email.toLowerCase() });
@@ -102,7 +102,7 @@ export async function postRegister(req, res, next) {
     if (existingUser) {
       errors.push({ msg: "Mail is already taken",path:"email" });
     }
-    console.log("FINAL ERRORS", errors)
+    console.log("FINAL ERRORS", errors.map(e => ({ path: e.path, msg: e.msg })));
      if (errors.length >0) {
       return res.status(400).json({ errors });
     }
@@ -114,6 +114,7 @@ export async function postRegister(req, res, next) {
       password: hashedPassword,
       username,
     });
+    console.log("User created:", user._id)
     publishEmailRegister(user)
     res
       .status(201)
