@@ -50,12 +50,13 @@ h2 {
     input{
         
         background-color: black;
-        color: var(--green-Matrix);
+        color: white;
         border-radius:  40px ;
         font-size: 10px;
+        font-weight: 700;
         border-style:solid;
         border-color: white;
-        border-width: 1.5px;
+        border-width: 1.8px;
         padding: 10px;
         text-align: left;
         
@@ -89,12 +90,13 @@ h2 {
             margin:auto;
             padding: 8px;
             cursor: pointer;
-            .active{
+            &:active{
                 background-color:rgba(0, 204, 51, 0.15);
             }
             &:hover{
               background-color:var(--green-Matrix);
               transition: background-color 0.3s ease, color 0.3s ease;
+              border-color: black;
               color: var(--bg-color);
               
             }
