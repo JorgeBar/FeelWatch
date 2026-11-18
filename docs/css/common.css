@@ -28,9 +28,23 @@ a{
     text-decoration: none;
     margin-bottom: 10px;
     color:#b8e6b8 ;
-    transition: background-color 0.3s linear;
+    width: 100%;
+    color: #0f120f;
+    font-weight: 700;
+    font-family: monospace;
+    letter-spacing: 0.06em;
+    box-shadow: 0 0 12px rgba(0, 204, 51, 0.4);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+
     a{
       color:#b8e6b8;
+    }
+    .form-btn:hover{
+      box-shadow: 0 0 20px rgba(0, 204, 51, 0.7);
+      transform: translateY(-1px);
+    }
+    .form-btn:active{
+       transform: translateY(0);
     }
 }
 .matrix-prueba {

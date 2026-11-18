@@ -10,8 +10,9 @@ h2 {
   font-size: 20px;
   margin: 0 auto 1rem auto;
 }
+
 .yoursown{
-  font-size: 15px;
+  font-size: 14px;
   margin-right: auto;
   a{
     text-decoration:none;
@@ -41,7 +42,7 @@ h2 {
     flex-direction: row;
     align-items: center;
     width: 80%;
-    margin: 0.8rem auto 1.8rem auto;
+    margin: 1.5rem auto 1.8rem auto;
     gap:4px;
     label{
       cursor: pointer;
@@ -58,33 +59,38 @@ h2 {
         padding: 10px;
         text-align: left;
         
+      
     }
     .search-container{
       display: flex;
       flex-direction: row;
       align-items: center;
-      gap: 4px;
+      gap: px;
     }
+   
     .lupa{
+      margin-top: 8px;
       width: 24px;
       height: 24px;
     }
     .sort-options{
       display:flex ;
-      flex-direction: row;
-      gap: 5px;
+      flex-direction: column;
+      gap: 10px;
+      margin-left: 0.6rem;
         button{
-            color: var(--green-Matrix);
+            color: white;
+            font-weight: 200;
             background-color: black;
             border-radius: 40px;
             border-style: solid;
-            border-width: 1.5px;
+            border-width: 1.6px;
             border-color: white;
             margin:auto;
             padding: 8px;
             cursor: pointer;
             .active{
-                background-color: var(--green-brand-color);
+                background-color:rgba(0, 204, 51, 0.15);
             }
             &:hover{
               background-color:var(--green-Matrix);
@@ -111,7 +117,7 @@ h2 {
         background-color: black;
         border-style: solid;
         border-color: white;
-        border-width: 1.5px;
+        border-width: 1.6px;
          &:hover{
               background-color:var(--green-Matrix);
               transition: background-color 0.3s ease, color 0.3s ease;
