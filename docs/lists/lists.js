@@ -98,6 +98,11 @@ document.addEventListener("DOMContentLoaded",async () => {
       })
    
    }
+      if (mobileSearchInput && listContainer) {
+       mobileSearchInput.addEventListener("search", () => {
+      listsController(listContainer, getLists, currentSort, mobileSearchInput.value, skip);
+   });
+   }
    if (paginationContainer){
       beforeElement.addEventListener("click", (e)=>{
          e.preventDefault()
