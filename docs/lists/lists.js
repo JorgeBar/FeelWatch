@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const mobileSearchInput = document.querySelector("#mobile-searching");
   const searchContainer = document.querySelector(".search-container");
   const closeSearchButton = document.querySelector("#close-search-modal");
+  const mobileSearchSubmit = document.querySelector(".lupa-submit-mobile");
 
   const mobileMedia = window.matchMedia("(max-width: 767px)");
   if (
@@ -133,6 +134,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       runSearch(mobileSearchInput.value, true);
     });
   }
+  mobileSearchSubmit.addEventListener("click", () => {
+    runSearch(mobileSearchInput.value, true);
+  });
   if (paginationContainer) {
     beforeElement.addEventListener("click", (e) => {
       e.preventDefault();

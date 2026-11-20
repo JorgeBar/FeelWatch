@@ -112,6 +112,18 @@ h2 {
     }
     
 }
+.lupa-submit-mobile{
+  background:transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  position:absolute;
+  top:50%;
+  right: 12px;
+  transform: translateY(-50%);
+}
 #mobile-search-modal {
     position: sticky;
     width: 100%;
@@ -145,7 +157,7 @@ h2 {
     border: 1px solid rgba(255, 255, 255, 0.14);
     outline: none;
     font-size: 22px;
-    padding: 10px;
+    padding: 10px 44px 10px 10px;
     color: #f3f4f6;
     background-color: rgba(28, 30, 38, 0.92);
     &::placeholder{
