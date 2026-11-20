@@ -31,7 +31,7 @@ function spinnerEvent(element) {
 export async function listsController(listContainer, fetchFunction, sort = "name-asc", search="", skip=0,limit=10) {
   //getList
   //spinnerEvent(listContainer);
-  console.log("BUSCAR:", searchg)
+  console.log("BUSCAR:", search)
 
   try {
     const lists = await fetchFunction(sort,search,"",skip,limit);
