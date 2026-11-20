@@ -13,7 +13,31 @@ document.addEventListener("DOMContentLoaded",async () => {
    const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
    const filterContainer = document.querySelector('.filters')
    const paginationContainer = document.querySelector('.pagination')
+   const searchDialog = document.querySelector("#mobile-search-modal");
+   const mobileSearchInput = document.querySelector("#mobile-searching");
+   const searchContainer = document.querySelector(".search-container");
+   const closeSearchButton = document.querySelector("#close-search-modal");
 
+   const mobileMedia = window.matchMedia("(max-width: 767px)");
+   if (searchDialog && closeSearchButton && mobileSearchInput && searchContainer) {
+
+    searchContainer.addEventListener("click", () => {
+       if (mobileMedia.matches) {
+            searchDialog.showModal();
+            mobileSearchInput.focus();
+        }
+    });
+
+    closeSearchButton.addEventListener("click", () => {
+        searchDialog.close();
+    });
+    mobileMedia.addEventListener("change", (e) => {
+        if (!e.matches && searchDialog.open) {
+            searchDialog.close();
+        }
+    });
+
+}
    
    if (notificationContainer && listContainer) {
       const {showNotification} = notificationController(notificationContainer)
