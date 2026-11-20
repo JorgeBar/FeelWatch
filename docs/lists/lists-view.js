@@ -80,7 +80,7 @@ carousel.classList.add(`carousel-${index}`)
 
 export function buildEmptyList() {
   const noListAvailable = document.createElement("h2");
-  noListAvailable.textContent = "No hay listas disponibles";
+  noListAvailable.textContent = "Sorry this list doesn't exist yet, we encorage you to create your own!";
 
   return noListAvailable;
 }

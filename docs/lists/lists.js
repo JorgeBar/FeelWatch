@@ -101,6 +101,9 @@ document.addEventListener("DOMContentLoaded",async () => {
       if (mobileSearchInput && listContainer) {
        mobileSearchInput.addEventListener("search", () => {
       listsController(listContainer, getLists, currentSort, mobileSearchInput.value, skip);
+      if (result?.lists?.length > 0) {
+      searchDialog.close();
+  }
    });
    }
    if (paginationContainer){
