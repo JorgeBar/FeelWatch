@@ -15,7 +15,7 @@ export async function getLists(req, res) {
     }
 
     //Filtro por user InitDB
-    if (req.queryowner === "demo"){
+    if (req.query.owner === "demo"){
         const userTesters = await User.find({username: {$in: ["TesterOne", "TesterTwo"]}})
         const testerIds = userTesters.map(user => user._id)
         query.owner = {$in: testerIds}

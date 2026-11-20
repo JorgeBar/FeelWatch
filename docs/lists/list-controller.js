@@ -3,10 +3,11 @@ import { getUserIdFromToken } from "../utils/jwt-decode.js";
 
 
 function drawLists(lists, listContainer) {
-  if (lists.length === 0) {
-    const noListAvailable = buildEmptyList(lists);
+ if (!lists?.lists || lists.lists.length === 0) {
+    const noListAvailable = buildEmptyList();
+    noListAvailable.classList.add("empty-list-message");
     listContainer.appendChild(noListAvailable);
-  } else {
+  } else  {
 
     lists.lists.forEach((list, index) => {
       const checkOwner = isOwner(list)

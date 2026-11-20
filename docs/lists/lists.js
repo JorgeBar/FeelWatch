@@ -1,126 +1,164 @@
-import {handleEditRedirect, listsController } from "../lists/list-controller.js"
-import { getLists } from "./lists-model.js"
-import {notificationController } from "../notification/notification-controller.js"
-import {sessionController } from "../session/session-controller.js"
-import {spinnerController} from "../spinner/spinner-controller.js"
-import { deleteListController } from "./delete-list/delete-list-controller.js"
+import {
+  handleEditRedirect,
+  listsController,
+} from "../lists/list-controller.js";
+import { getLists } from "./lists-model.js";
+import { notificationController } from "../notification/notification-controller.js";
+import { sessionController } from "../session/session-controller.js";
+import { spinnerController } from "../spinner/spinner-controller.js";
+import { deleteListController } from "./delete-list/delete-list-controller.js";
 
-document.addEventListener("DOMContentLoaded",async () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  const listContainer = document.querySelector("#lists-loading");
+  const notificationContainer = document.querySelector("#notification-test");
+  const sipnnerContainer = document.querySelector(".spinner");
+  const sessionContainers = document.querySelectorAll(
+    ".session-nav, .session-button",
+  );
+  const filterContainer = document.querySelector(".filters");
+  const paginationContainer = document.querySelector(".pagination");
+  const searchDialog = document.querySelector("#mobile-search-modal");
+  const mobileSearchInput = document.querySelector("#mobile-searching");
+  const searchContainer = document.querySelector(".search-container");
+  const closeSearchButton = document.querySelector("#close-search-modal");
 
-   const listContainer = document.querySelector("#lists-loading")
-   const notificationContainer = document.querySelector("#notification-test")
-   const sipnnerContainer = document.querySelector('.spinner')
-   const sessionContainers = document.querySelectorAll('.session-nav, .session-button')
-   const filterContainer = document.querySelector('.filters')
-   const paginationContainer = document.querySelector('.pagination')
-   const searchDialog = document.querySelector("#mobile-search-modal");
-   const mobileSearchInput = document.querySelector("#mobile-searching");
-   const searchContainer = document.querySelector(".search-container");
-   const closeSearchButton = document.querySelector("#close-search-modal");
-
-   const mobileMedia = window.matchMedia("(max-width: 767px)");
-   if (searchDialog && closeSearchButton && mobileSearchInput && searchContainer) {
-
+  const mobileMedia = window.matchMedia("(max-width: 767px)");
+  if (
+    searchDialog &&
+    closeSearchButton &&
+    mobileSearchInput &&
+    searchContainer
+  ) {
     searchContainer.addEventListener("click", () => {
-       if (mobileMedia.matches) {
-            searchDialog.showModal();
-            mobileSearchInput.focus();
-        }
+      if (mobileMedia.matches) {
+        searchDialog.showModal();
+        mobileSearchInput.focus();
+      }
     });
 
     closeSearchButton.addEventListener("click", () => {
-        searchDialog.close();
+      searchDialog.close();
     });
     mobileMedia.addEventListener("change", (e) => {
-        if (!e.matches && searchDialog.open) {
-            searchDialog.close();
-        }
+      if (!e.matches && searchDialog.open) {
+        searchDialog.close();
+      }
+    });
+  }
+
+  if (notificationContainer && listContainer) {
+    const { showNotification } = notificationController(notificationContainer);
+
+    listContainer.addEventListener("loading-lists-info", (event) => {
+      showNotification(event.detail.message, event.detail.type);
+    });
+  }
+
+  if (sipnnerContainer && listContainer) {
+    const { showSpinner } = spinnerController(sipnnerContainer);
+
+    listContainer.addEventListener("loading-spinner", () => {
+      showSpinner();
+    });
+  }
+
+  if (listContainer) {
+    listsController(listContainer, getLists);
+    deleteListController(listContainer);
+    handleEditRedirect(listContainer);
+  }
+  let currentSort = "name-asc";
+  let skip = 0;
+  const result = await listsController(listContainer, getLists);
+  const page = result.page;
+  const totalPages = result.totalPages;
+
+  const searchElement = document.querySelector("#searching");
+  const beforeElement = document.querySelector("#prev-btn");
+  const nextElement = document.querySelector("#next-btn");
+  const sortElement = document.querySelector(".sort-options");
+  const pageElement = document.querySelector("#page-info");
+  pageElement.textContent = `${page} of ${totalPages}`;
+
+  document.querySelector(".yoursown a").addEventListener("click", (e) => {
+    e.stopPropagation();
+  });
+  let currentSearch = "";
+
+  async function runSearch(newValue, closeModal = false) {
+    currentSearch = newValue;
+
+    if (searchElement) {
+      searchElement.value = currentSearch;
+    }
+    if (mobileSearchInput) {
+      mobileSearchInput.value = currentSearch;
+    }
+
+    await listsController(
+      listContainer,
+      getLists,
+      currentSort,
+      currentSearch,
+      skip,
+    );
+
+    if (closeModal && searchDialog?.open) {
+      searchDialog.close();
+    }
+  }
+
+  if (filterContainer && searchElement) {
+    filterContainer.addEventListener("search", () => {
+      runSearch(searchElement.value, false);
     });
 
-}
-   
-   if (notificationContainer && listContainer) {
-      const {showNotification} = notificationController(notificationContainer)
-      
-      listContainer.addEventListener("loading-lists-info", (event) =>{
-         showNotification(event.detail.message, event.detail.type)
-      })
-   }
-   
-   if (sipnnerContainer && listContainer) {
-      const {showSpinner} = spinnerController(sipnnerContainer)
-      
-      listContainer.addEventListener("loading-spinner", () =>{
-         showSpinner()
-      })
-   }
-   
-   if (listContainer) {
-      listsController(listContainer,getLists)
-      deleteListController(listContainer)
-      handleEditRedirect(listContainer)
-   }
-   let currentSort = "name-asc"
-   let skip = 0;
-   const result = await listsController(listContainer, getLists)
-   const page = result.page
-   const totalPages = result.totalPages
+    filterContainer.addEventListener("click", async (e) => {
+      e.preventDefault();
+      if (e.target.id.includes("name-asc")) {
+        sortElement.classList.add("active");
+        currentSort = "name-asc";
+        listsController(listContainer, getLists, currentSort);
+      }
 
-   const searchElement = document.querySelector('#searching')
-   const beforeElement = document.querySelector('#prev-btn')
-   const nextElement = document.querySelector('#next-btn')
-   const sortElement = document.querySelector('.sort-options')
-   const pageElement = document.querySelector('#page-info')
-   pageElement.textContent = `${page} of ${totalPages}`
-
-   document.querySelector('.yoursown a').addEventListener('click', (e) => {
-    e.stopPropagation()
-})
-
-   if (filterContainer){
-      filterContainer.addEventListener("search",()=>{
-          listsController(listContainer,getLists,currentSort,searchElement.value,skip)
-      })
-      filterContainer.addEventListener("click", async(e) =>{
-         e.preventDefault()
-         if(e.target.id.includes("name-asc")){
-           sortElement.classList.add('active')
-            currentSort = "name-asc"
-            listsController(listContainer,getLists,currentSort)
-
-         }
-
-         if(e.target.id.includes('name-desc')) {
-           sortElement.classList.add('active')
-            currentSort="name-desc"
-            listsController(listContainer,getLists,currentSort)
-         }  
-      })
-   
-   }
-      if (mobileSearchInput && listContainer) {
-       mobileSearchInput.addEventListener("search", () => {
-      listsController(listContainer, getLists, currentSort, mobileSearchInput.value, skip);
-      if (result?.lists?.length > 0) {
-      searchDialog.close();
+      if (e.target.id.includes("name-desc")) {
+        sortElement.classList.add("active");
+        currentSort = "name-desc";
+        listsController(listContainer, getLists, currentSort);
+      }
+    });
   }
-   });
-   }
-   if (paginationContainer){
-      beforeElement.addEventListener("click", (e)=>{
-         e.preventDefault()
-         if (skip!=0){
-            skip = skip -10;
-         }
-         listsController(listContainer,getLists,currentSort, searchElement.value,skip)
-      })
-       nextElement.addEventListener("click", (e)=>{
-         e.preventDefault()
-         skip = skip + 10
-         listsController(listContainer,getLists,currentSort, searchElement.value,skip)
-         
-      })
-   }
-   
-   sessionController(sessionContainers)
-})
+  if (mobileSearchInput && listContainer) {
+    mobileSearchInput.addEventListener("search", () => {
+      runSearch(mobileSearchInput.value, true);
+    });
+  }
+  if (paginationContainer) {
+    beforeElement.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (skip != 0) {
+        skip = skip - 10;
+      }
+      listsController(
+        listContainer,
+        getLists,
+        currentSort,
+        searchElement.value,
+        skip,
+      );
+    });
+    nextElement.addEventListener("click", (e) => {
+      e.preventDefault();
+      skip = skip + 10;
+      listsController(
+        listContainer,
+        getLists,
+        currentSort,
+        searchElement.value,
+        skip,
+      );
+    });
+  }
+
+  sessionController(sessionContainers);
+});
